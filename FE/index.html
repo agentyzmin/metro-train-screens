@@ -1,0 +1,85 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Kyiv metro train screen</title>
+    <script type="text/javascript" src="libs/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="libs/doT.min.js"></script>
+    <script type="text/javascript" src="js/scroll-text.jquery.js"></script>
+
+    <script type="text/javascript" src="js/screen-station-details.js"></script>
+    <script type="text/javascript" src="js/screen-stations-list.js"></script>
+
+    <script type="text/javascript" src="js/routes_m1.js"></script>
+
+    <script type="text/javascript" src="js/main.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="b-page b-page__rotate b-page_m1 b-screen">
+
+<div class="b-header"></div>
+<div class="b-stations-list"></div>
+<div class="b-station-details"></div>
+
+<script type="text/x-template" id="tmpl-inline-station">
+    <div class="b-inline-station">
+        <div class="b-inline-station__name"></div>
+
+        <div class="b-transfer-options">
+            {{? it.transfer && it.transfer.trams }}
+                <div class="b-transfer-option b-transfer-option_tram">
+                    {{~it.transfer.trams :value}}<div>{{=value}}</div>{{~}}
+                </div>
+            {{?}}
+
+            {{? it.transfer && it.transfer.urbanRail }}
+                <div class="b-transfer-option b-transfer-option_urban-rail"></div>
+            {{?}}
+
+            {{? it.transfer && it.transfer.trainStation }}
+                <div class="b-transfer-option b-transfer-option_train-station"></div>
+            {{?}}
+
+            {{? it.transfer && it.transfer.metro }}
+                <div class="b-transfer-option b-transfer-option_metro b-transfer-option_metro-{{=it.transfer.metro.toLowerCase()}}"></div>
+            {{?}}
+        </div>
+
+        <div class="b-inline-station__time-left"></div>
+    </div>
+</script>
+
+<script type="text/x-template" id="tmpl-station-details">
+    <div class="b-station-details__header">
+        <div class="b-station-details__line">
+            <div></div>
+        </div>
+        <div class="b-station-details__station-title"></div>
+        <div class="b-station-details__station-name-1"></div>
+        <div class="b-station-details__station-name-2"></div>
+    </div>
+
+    <div class="b-station-details__footer">
+        <div class="b-station-details__transfer-title"></div>
+
+        <div class="b-station-details__transfer-wrap">
+            {{? it.transfer && it.transfer.trainStation }}
+            <div class="b-transfer-option b-transfer-option_train-station"></div>
+
+            {{?? it.transfer && it.transfer.trams }}
+            <div class="b-transfer-option b-transfer-option_tram">
+                {{~it.transfer.trams :value}}<div>{{=value}}</div>{{~}}
+            </div>
+
+            {{?? it.transfer && it.transfer.urbanRail }}
+            <div class="b-transfer-option b-transfer-option_urban-rail"></div>
+
+            {{?? it.transfer && it.transfer.metro }}
+            <div class="b-transfer-option b-transfer-option_metro b-transfer-option_metro-{{=it.transfer.metro.toLowerCase()}}"></div>
+            {{?}}
+
+            <div class="b-station-details__transfer-station"></div>
+        </div>
+    </div>
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+@import "_animate";
+
+.b-screen {
+    height: 100%;
+    overflow: hidden;
+
+    background: rgb(36, 35, 61);
+}
+
+.b-screen_station-details {
+}
+
+.b-screen_stations-list {
+    .b-header {
+        height: 128px;
+        overflow: hidden;
+
+        padding: 25px 47px 0 47px;
+
+        .transition(height 300ms); // Same as transition at .b-stations-list__line
+
+        .b-transfer-options {
+            margin-top: 0;
+            .transition(margin-top 300ms); // Same as transition at .b-stations-list__line
+        }
+    }
+}

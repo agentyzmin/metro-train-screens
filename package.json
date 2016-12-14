@@ -1,0 +1,24 @@
+{
+  "name": "A3-Metro-Train-Screen",
+  "version": "1.0.0",
+  "description": "",
+  "main": "BE/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node BE/server.js"
+  },
+  "author": "Artem Veikus <artem@veikus.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "repository": "https://github.com/agentyzmin/metro-train-screens"
+  },
+  "dependencies": {
+    "express": "^4.14.0",
+    "serialport": "^4.0.6"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-less": "^3.3.0"
+  }
+}

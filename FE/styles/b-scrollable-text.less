@@ -1,0 +1,22 @@
+@import "_animate";
+
+.b-scrollable-text {
+    white-space: nowrap;
+
+    .animate {
+        .transition(margin-top 0.3s);
+    }
+}
+
+.b-scrollable-text__content-wrap {
+    overflow: hidden;
+}
+
+.b-scrollable-text__content-wrap,
+.b-scrollable-text__current,
+.b-scrollable-text__next {
+    width: 100%;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

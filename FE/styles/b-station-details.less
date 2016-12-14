@@ -1,0 +1,122 @@
+@import "_animate";
+
+@hidePreviousStationDuration: 500ms; // Check screen-station-details.js before update
+@lineDuration: 100ms;
+@titleDelay: 100ms;
+@nameDelay: 200ms;
+@nextTitleDelay: 300ms;
+@nextStationDelay: 400ms;
+
+.b-station-details {
+    position: relative;
+}
+
+// Header
+.b-station-details__header {
+    position: relative;
+    padding-left: 160px;
+
+    &.animate {
+        .transition(top @hidePreviousStationDuration);
+    }
+}
+
+.b-station-details__line {
+    position: absolute;
+    top: 70px;
+    left: 0;
+
+    width: 125px;
+    height: 125px;
+    overflow: hidden;
+
+    line-height: 125px;
+    text-align: center;
+    font-size: 55px;
+
+    border-radius: 50%;
+    background: silver;
+    text-transform: uppercase;
+
+    opacity: 1;
+
+    /* This fixes the overflow:hidden in Chrome */
+    -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
+
+    &.animate {
+        .transition(opacity @lineDuration);
+    }
+}
+
+.b-station-details__station-title {
+    font-size: 60px;
+
+    .animate {
+        .transition-delay(@titleDelay);
+    }
+}
+
+.b-station-details__station-name-1,
+.b-station-details__station-name-2 {
+    font-size: 93px;
+
+    .animate {
+        .transition-delay(@nameDelay);
+    }
+}
+
+// Footer
+.b-station-details__footer {
+    position: absolute;
+    bottom: 0;
+    padding-left: 160px;
+
+    &.animate {
+        .transition(bottom @hidePreviousStationDuration);
+    }
+}
+
+.b-station-details__transfer-title {
+    font-size: 48px;
+    margin-bottom: -5px;
+
+    .animate {
+        .transition-delay(@nextTitleDelay);
+    }
+}
+
+.b-station-details__transfer-wrap {
+    white-space: nowrap;
+
+    >div {
+        display: inline-block;
+    }
+
+    .b-transfer-option {
+        min-width: 90px;
+        margin-left: -90px;
+        vertical-align: middle;
+
+        &:before {
+            width: 90px;
+            height: 90px;
+
+            position: relative;
+            top: -10px;
+            left: -10px;
+        }
+    }
+
+    .b-transfer-option_tram {
+        margin-right: 15px;
+    }
+}
+
+.b-station-details__transfer-station {
+    font-size: 54px;
+    vertical-align: middle;
+
+    .animate {
+        .transition-delay(@nextStationDelay);
+    }
+}

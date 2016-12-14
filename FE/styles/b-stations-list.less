@@ -1,0 +1,89 @@
+@import "_animate";
+
+.b-stations-list__line {
+    position: fixed;
+    top: 0;
+
+    width: 100%;
+    height: 128px;
+    overflow: hidden;
+
+    background: rgb(42, 41, 66);
+    padding: 25px 47px 0 47px;
+
+    .transition(top 300ms, height 300ms);
+
+    .b-transfer-options {
+        margin-top: 0;
+        .transition(margin-top 300ms);
+    }
+
+    &:nth-child(odd) {
+        background: rgb(35, 35, 52);
+    }
+
+    &:nth-child(1) {
+        top: 128px;
+        z-index: 96;
+
+        .b-scrollable-text .animate {
+            .transition-delay(100ms);
+        }
+
+        .b-transfer-options {
+            .transition-delay(150ms);
+        }
+    }
+
+    &:nth-child(2) {
+        top: 256px;
+        z-index: 97;
+
+        .b-scrollable-text .animate {
+            .transition-delay(200ms);
+        }
+
+        .b-transfer-options {
+            .transition-delay(250ms);
+        }
+    }
+
+    &:nth-child(3) {
+        top: 384px;
+        z-index: 98;
+
+        .b-scrollable-text .animate {
+            .transition-delay(300ms);
+        }
+
+        .b-transfer-options {
+            .transition-delay(350ms);
+        }
+    }
+
+    &:nth-child(4) {
+        top: 512px;
+        z-index: 99;
+
+        .b-scrollable-text .animate {
+            .transition-delay(400ms);
+        }
+
+        .b-transfer-options {
+            .transition-delay(450ms);
+        }
+    }
+
+    &:nth-child(5) {
+        top: 640px;
+        z-index: 100;
+
+        .b-scrollable-text .animate {
+            .transition-delay(500ms);
+        }
+
+        .b-transfer-options {
+            .transition-delay(550ms);
+        }
+    }
+}
