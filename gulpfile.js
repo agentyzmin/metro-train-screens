@@ -3,7 +3,7 @@ var gulp = require('gulp'),
 
 gulp.task('default', ['less']);
 
-gulp.task('watch', function() {
+gulp.task('watch', ['less'], function() {
     gulp.watch('FE/**/*.less', ['less']);
 });
 
