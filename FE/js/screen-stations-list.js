@@ -88,7 +88,9 @@
             addInterval(function() {
                 // Travel time decrease
                 data.forEach(function(station) {
-                    station.travelTime -= 5;
+                    if (station) {
+                        station.travelTime -= 5;
+                    }
                 });
 
                 updateTexts();
