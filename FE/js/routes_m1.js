@@ -135,7 +135,7 @@
     stations.push({
         name: {
             ua: 'Політехнічний інститут',
-            en: 'Politekhnichnyi institut'
+            en: 'Politekhnichnyi instityt'
         },
         line: 'm1',
         timeToPreviousStation: timeToPreviousStation(95),
@@ -172,6 +172,7 @@
                 ua: 'Залізничного вокзалу',
                 en: 'Railway station'
             },
+            trams: ['T3'],
             trainStation: true,
             urbanRail: true
         },
