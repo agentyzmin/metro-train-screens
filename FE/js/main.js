@@ -9,9 +9,6 @@ jQuery(function($) {
     bindInformationalServer();
 
     function bindInformationalServer() {
-        var timeout,
-            previousKey;
-
         request();
 
         function request() {
@@ -28,7 +25,7 @@ jQuery(function($) {
                         onEvent(data);
                     }
 
-                    setTimeout(request, 1000);
+                    request();
                 })
                 .catch(function() {
                     console.log('Lost connection to the server');
@@ -37,51 +34,56 @@ jQuery(function($) {
         }
 
         function onEvent(data) {
-            var details, station, direction, previousKeyCopy;
-
-            clearTimeout(timeout);
-
             switch (data.type) {
                 case 'DTMF':
-                    details = getKeyByDTMF(data.code);
-                    station = details && currentRoute[details.key];
-
-                    if (!details || !station) {
-                        return;
-                    }
-
-                    if (details.type === 'current') {
-                        previousKey = details.key;
-                        new app.screens.StationDetails(station, false);
-                    }
-                    else if (details.type === 'next') {
-                        new app.screens.StationDetails(station, true);
-
-                        // Calculate direction and display next stations if success
-                        if (previousKey && (details.key - previousKey === 1)) {
-                            direction = 1;
-                        } else if (previousKey && (details.key - previousKey === -1)) {
-                            direction = -1;
-                        } else {
-                            direction = null;
-                        }
-
-                        previousKeyCopy = previousKey;
-                        previousKey = null;
-
-                        if (direction) {
-                            timeout = setTimeout(function() {
-                                new app.screens.StationsList(getNextStations(previousKeyCopy, direction));
-                            }, NEXT_STATION_DURATION);
-                        }
-                    }
+                    onDTMF(data.code);
                     break;
 
                 case 'nothing':
                     break;
 
                 default:
-                    console.log('Unknown type:', data.type);
+                    console.log('Unknown event type:', data.type);
+            }
+        }
+
+        function onDTMF(code) {
+            var direction, previousStationIndex,
+                details = decodeDTMF(code);
+
+            clearTimeout(onDTMF.timeout);
+
+            if (!details) {
+                return;
+            }
+
+            switch (details.type) {
+                case 'currentStation':
+                    onDTMF.previousStationIndex = details.stationIndex;
+                    new app.screens.StationDetails(details.station, false);
+                    break;
+
+                case 'nextStation':
+                    new app.screens.StationDetails(details.station, true);
+
+                    // Calculate direction and display next stations (if success)
+                    previousStationIndex = onDTMF.previousStationIndex;
+                    onDTMF.previousStationIndex = null;
+
+                    if (previousStationIndex && (details.stationIndex - previousStationIndex === 1)) {
+                        direction = 1;
+                    } else if (previousStationIndex && (details.stationIndex - previousStationIndex === -1)) {
+                        direction = -1;
+                    } else {
+                        direction = null;
+                    }
+
+                    if (direction) {
+                        onDTMF.timeout = setTimeout(function() {
+                            new app.screens.StationsList(getNextStations(previousStationIndex, direction));
+                        }, NEXT_STATION_DURATION);
+                    }
+                    break;
             }
         }
     }
@@ -117,7 +119,7 @@ jQuery(function($) {
         return result;
     }
 
-    function getKeyByDTMF(code) {
+    function decodeDTMF(code) {
         var i, item;
 
         code = code.toString();
@@ -127,15 +129,17 @@ jQuery(function($) {
 
             if (item.DTMF.current === code) {
                 return {
-                    key: i,
-                    type: 'current'
+                    type: 'currentStation',
+                    stationIndex: i,
+                    station: item
                 }
             }
 
             if (item.DTMF.next === code) {
                 return {
-                    key: i,
-                    type: 'next'
+                    type: 'nextStation',
+                    stationIndex: i,
+                    station: item
                 }
             }
         }
