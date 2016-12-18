@@ -26,6 +26,10 @@
         ua: ['Поїзд далі не їде', 'Не забувайте свої речі'],
         en: ['This train terminates here', 'Don\'t forget your belongings']
     };
+    var EXIT_RIGHT_NOTIFICATION = {
+        ua: 'Вихід на праву сторону',
+        en: 'Exit to the right'
+    };
 
     var $window, $body, $header, $stationDetails, $stationsList, stationDetailTmpl;
 
@@ -50,11 +54,12 @@
 
     function Screen(station, options) {
         var lang, $stationTitle, $stationName1, $stationName2, $transferTitle, $transferStation,
-            $endLine1, $endLine2,
+            $endLine1, $endLine2, $exitMessage,
             that = this,
             intervals = [],
             timeouts = [];
 
+        options = options || {};
         this.name = 'station-details';
         this.stop = stop;
         cleanAndInit();
@@ -109,7 +114,7 @@
 
         function init() {
             var $line,
-                params = $.extend({ isEnd: options && options.isEnd }, station);
+                params = $.extend({ isEnd: options.isEnd }, station);
 
             $stationDetails.html(stationDetailTmpl(params));
             $stationTitle = $stationDetails.find('.b-station-details__station-title');
@@ -120,6 +125,10 @@
             if (station.transfer) {
                 $transferTitle = $stationDetails.find('.b-station-details__transfer-title');
                 $transferStation = $stationDetails.find('.b-station-details__transfer-station');
+            }
+
+            if (station.exit === 'right') {
+                $exitMessage = $stationDetails.find('.b-station-details__exit-message');
             }
 
             if (options.isEnd) {
@@ -143,7 +152,7 @@
 
         function updateTexts() {
             var title, line1, line2, transferTitleText, transferStationText,
-                isNext = options && options.isNext,
+                isNext = options.isNext,
                 transfer = station.transfer || {};
 
             lang = (lang === 'ua' ? 'en' : 'ua');
@@ -191,6 +200,10 @@
                     $transferTitle.scrollText(transferTitleText);
                     $transferStation.scrollText(transferStationText);
                 }
+            }
+
+            if (station.exit === 'right') {
+                $exitMessage.scrollText(EXIT_RIGHT_NOTIFICATION[lang]);
             }
 
             if (options.isEnd) {

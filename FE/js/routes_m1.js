@@ -268,7 +268,8 @@
         DTMF: {
             next: '0206',
             current: '0207'
-        }
+        },
+        exit: 'right'
     });
 
     stations.push({
