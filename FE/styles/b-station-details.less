@@ -69,11 +69,17 @@
 .b-station-details__footer {
     position: absolute;
     bottom: 0;
-    padding-left: 160px;
 
     &.animate {
         .transition(bottom @hidePreviousStationDuration);
     }
+}
+
+
+// __transfer
+.b-station-details__transfer {
+    margin-top: 10px;
+    margin-left: 160px;
 }
 
 .b-station-details__transfer-title {
@@ -85,7 +91,7 @@
     }
 }
 
-.b-station-details__transfer-wrap {
+.b-station-details__transfer-option-wrap {
     white-space: nowrap;
 
     >div {
@@ -115,6 +121,50 @@
 .b-station-details__transfer-station {
     font-size: 54px;
     vertical-align: middle;
+
+    .animate {
+        .transition-delay(@nextStationDelay);
+    }
+}
+
+// __end
+.b-station-details__end {
+    position: relative;
+    padding-left: 160px;
+    margin-bottom: 32px;
+}
+
+.b-station-details__end-icon {
+    position: absolute;
+    top: 7px;
+    left: 53px;
+
+    width: 72px;
+    height: 64px;
+    overflow: hidden;
+
+    background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNzJweCIgaGVpZ2h0PSI2NHB4IiB2aWV3Qm94PSIwIDAgNzIgNjQiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDQxLjIgKDM1Mzk3KSAtIGh0dHA6Ly93d3cuYm9oZW1pYW5jb2RpbmcuY29tL3NrZXRjaCAtLT4KICAgIDx0aXRsZT53YXJuaW5nPC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGRlZnM+PC9kZWZzPgogICAgPGcgaWQ9IlBhZ2UtMSIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9Indhcm5pbmciIGZpbGw9IiNGRkMyMTciPgogICAgICAgICAgICA8cGF0aCBkPSJNMzIuMDE4NjcxMiwyLjg4NDc5MzY5IEMzNC4yMTc0OTg0LC0wLjk1MjYzODU2NyAzNy43NzcwOTExLC0wLjk2MjA4MTA2MSAzOS45ODEzMjg4LDIuODg0NzkzNjkgTDcxLjAxODY3MTIsNTcuMDUxNzE0MiBDNzMuMjE3NDk4NCw2MC44ODkxNDY1IDcxLjQyMDExNjQsNjQgNjcuMDAxMDIxNSw2NCBMNC45OTg5Nzg0OCw2NCBDMC41ODEyNjQ2NSw2NCAtMS4yMjI5MDg4NSw2MC44OTg1ODkgMC45ODEzMjg4NSw1Ny4wNTE3MTQyIEwzMi4wMTg2NzEyLDIuODg0NzkzNjkgWiBNMzYsMTIgTDYyLDU3IEwxMCw1NyBMMzYsMTIgWiIgaWQ9IkNvbWJpbmVkLVNoYXBlIj48L3BhdGg+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0zNiw0NiBDMzMuNTU1OTU0NSw0NiAzMiw0Ny43Nzc1NjU2IDMyLDUwIEMzMiw1Mi4yMjI0MzQ0IDMzLjU1NTk1NDUsNTQgMzYsNTQgQzM4LjQ0NDA0NTUsNTQgNDAsNTIuMjIyNDM0NCA0MCw1MCBDMzkuNzc2OTAwMSw0Ny41NTUxMzEzIDM4LjIyMTkwMzEsNDYgMzYsNDYgTDM2LDQ2IFogTTMzLjE0Mjg1NzEsNDIgTDM4Ljg1NzE0MjksNDIgTDQwLDI2IEwzMiwyNiBMMzMuMTQyODU3MSw0MiBaIiBpZD0iRmlsbC0xIj48L3BhdGg+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4=");
+    background-repeat: no-repeat;
+}
+
+.b-station-details__end-line-1 {
+    font-size: 65px;
+
+    letter-spacing: 1px;
+    word-spacing: 0;
+
+    .animate {
+        .transition-delay(@nextTitleDelay);
+    }
+}
+
+.b-station-details__end-line-2 {
+    font-size: 45px;
+
+    letter-spacing: 4px;
+    word-spacing: -4px;
+
+    margin-top: 12px;
 
     .animate {
         .transition-delay(@nextStationDelay);
