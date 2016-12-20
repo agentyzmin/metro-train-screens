@@ -20,7 +20,7 @@
     };
     var TRANSFER_TO_URBAN_RAIL = {
         ua: 'Вихід до міської електрички',
-        en: 'Transfer to City Train'
+        en: 'Transfer to Urban Rail'
     };
     var END_STATION_NOTIFICATION = {
         ua: ['Поїзд далі не їде', 'Не забувайте свої речі'],
