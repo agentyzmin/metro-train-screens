@@ -114,7 +114,7 @@ jQuery(function($) {
         method = currentDirection > 0 ? 'timeToNextStation' : 'timeToPreviousStation';
         time += station[method] ? station[method]() : 0;
 
-        for (i = 0; i < DISPLAY_NEXT_STATIONS; ++i) {
+        for (i = 0; i < currentRoute.length; ++i) {
             index = currentStationKey + (i + 1) * (currentDirection > 0 ? 1 : -1);
             station = currentRoute[index];
 
@@ -128,8 +128,6 @@ jQuery(function($) {
 
                 time += station[method] ? station[method]() : 0;
                 time += station.timeOnPlatform ? station.timeOnPlatform() : 0;
-            } else {
-                result.push(null);
             }
         }
 

@@ -1,12 +1,18 @@
 (function() {
     "use strict";
 
+    var DISPLAY_STATIONS = 6;
     var TIME_UNIT = {
         ua: 'хв',
         en: 'min'
     };
+    var INTERMEDIATE = {
+        ua: ['%count станція', '%count станції', '%count станцій'],
+        en: ['%count station', '%count stations', '%count stations']
+    };
 
-    var $window, $body, $header, $stationDetails, $stationsList, inlineStationTmpl;
+    var $window, $body, $header, $stationDetails, $stationsList,
+        inlineStationTmpl, headerTmpl, inlineIntermediateStationsTmpl;
 
     if (!window.app) {
         window.app = {};
@@ -23,6 +29,8 @@
         $stationDetails = $('.b-station-details');
         $stationsList = $('.b-stations-list');
         inlineStationTmpl = doT.template($('#tmpl-inline-station').html());
+        headerTmpl = doT.template($('#tmpl-header').html());
+        inlineIntermediateStationsTmpl = doT.template($('#tmpl-inline-intermediate-stations').html());
 
         app.screens.StationsList = Screen;
     });
@@ -38,7 +46,7 @@
         init();
 
         function init() {
-            var i, $transferOptions,
+            var i,
                 previousScreen = app.screens.current;
 
             if (previousScreen) {
@@ -49,24 +57,24 @@
             $body.addClass('b-screen_stations-list');
 
             // Header
-            $header.html(inlineStationTmpl(data[0]));
-
-            $transferOptions = $header.find('.b-transfer-options');
-            $transferOptions.css('margin-top', '-150px');
-
-            addTimeout(function() {
-                $transferOptions.css('margin-top', '');
-            }, 100);
+            $header.html(headerTmpl());
+            updateClock();
+            addInterval(updateClock, 60000);
 
             // Content
             $stationsList.show().empty();
-            for (i = 1; i < data.length; ++i) {
+            for (i = 0; i < DISPLAY_STATIONS; ++i) {
                 (function(i) {
                     var $transferOptions,
-                        station = data[i],
+                        station = (data.length > DISPLAY_STATIONS && i === DISPLAY_STATIONS - 1)
+                            ? data[data.length - 1]
+                            : data[i],
                         $html = $('<div class="b-stations-list__line"></div>');
 
-                    if (station) {
+                    if (data.length > DISPLAY_STATIONS && i === DISPLAY_STATIONS - 2) {
+                        $html.html(inlineIntermediateStationsTmpl());
+                    }
+                    else if (station) {
                         $html.html(inlineStationTmpl(station));
                         $transferOptions = $html.find('.b-transfer-options');
 
@@ -98,30 +106,39 @@
         }
 
         function updateTexts() {
-            var $line, name, time, station, i,
+            var $line, name, time, station, i, count, text,
                 $lines = $('.b-stations-list__line');
 
             lang = (lang === 'ua' ? 'en' : 'ua');
 
-            // Header
-            time = data[0].travelTime > 60 ? Math.ceil(data[0].travelTime / 60) : 1;
-            name = data[0].name[lang];
-
-            $header
-                .find('.b-inline-station__time-left')
-                .scrollText(time + ' ' + TIME_UNIT[lang]);
-            $header
-                .find('.b-inline-station__name')
-                .scrollText(name);
-
             // Content
-            for (i = 1; i < data.length; ++i) {
-                station = data[i];
+            for (i = 0; i < DISPLAY_STATIONS; ++i) {
+                station = (data.length > DISPLAY_STATIONS && i === DISPLAY_STATIONS - 1)
+                    ? data[data.length - 1]
+                    : data[i];
 
-                if (station) {
+                if (data.length > DISPLAY_STATIONS && i === DISPLAY_STATIONS - 2) {
+                    $line = $($lines.get(i));
+                    count = data.length - DISPLAY_STATIONS;
+
+                    if (count === 1) {
+                        text = INTERMEDIATE[lang][0].replace('%count', count);
+                    } else if (count > 1 && count < 5) {
+                        text = INTERMEDIATE[lang][1].replace('%count', count);
+                    } else {
+                        text = INTERMEDIATE[lang][2].replace('%count', count);
+                    }
+
+                    $line
+                        .find('.b-intermediate-stations__count')
+                        .scrollText(text);
+                }
+                else if (station) {
                     time = station.travelTime > 60 ? Math.ceil(station.travelTime / 60) : 1;
                     name = station.name[lang];
-                    $line = $($lines.get(i - 1));
+                    $line = $($lines.get(i));
+
+                    // TODO: Отображать точку если на таймере <60 секунд
 
                     $line
                         .find('.b-inline-station__name')
@@ -143,6 +160,18 @@
             result -= parseInt($transferOptions.css('right'));
 
             $stationName.css('max-width', result);
+        }
+
+        function updateClock() {
+            var $clock = $('.b-clock'),
+                val = '',
+                ts = new Date();
+
+            val += ts.getHours() < 10 ? '0' + ts.getHours() : ts.getHours();
+            val += ':';
+            val += ts.getMinutes() < 10 ? '0' + ts.getMinutes() : ts.getMinutes();
+
+            $clock.text(val);
         }
 
         function stop() {
