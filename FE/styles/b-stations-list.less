@@ -1,20 +1,31 @@
 @import "_animate";
 
 .b-stations-list__line {
+    .transition(top 300ms, height 300ms);
+
     position: fixed;
     top: 0;
 
     width: 100%;
-    height: 128px;
+    height: 111px;
     overflow: hidden;
 
     background: rgb(42, 41, 66);
-    padding: 25px 40px 0 40px;
 
-    .transition(top 300ms, height 300ms);
+    .b-inline-station {
+        margin: 15px 30px 0 30px;
+    }
+
+    .b-intermediate-stations {
+        margin: 5px 0 0 80px;
+    }
 
     .b-transfer-options {
         margin-top: 0;
+    }
+
+    .b-transfer-options,
+    .b-intermediate-stations__direction {
         .transition(margin-top 300ms);
     }
 
@@ -23,7 +34,7 @@
     }
 
     &:nth-child(1) {
-        top: 128px;
+        top: 100px;
         z-index: 96;
 
         .b-scrollable-text .animate {
@@ -36,7 +47,7 @@
     }
 
     &:nth-child(2) {
-        top: 256px;
+        top: 211px;
         z-index: 97;
 
         .b-scrollable-text .animate {
@@ -49,7 +60,7 @@
     }
 
     &:nth-child(3) {
-        top: 384px;
+        top: 322px;
         z-index: 98;
 
         .b-scrollable-text .animate {
@@ -62,7 +73,7 @@
     }
 
     &:nth-child(4) {
-        top: 512px;
+        top: 433px;
         z-index: 99;
 
         .b-scrollable-text .animate {
@@ -75,20 +86,21 @@
     }
 
     &:nth-child(5) {
-        top: 640px;
+        top: 544px;
         z-index: 100;
 
         .b-scrollable-text .animate {
             .transition-delay(500ms);
         }
 
-        .b-transfer-options {
+        .b-transfer-options,
+        .b-intermediate-stations__direction {
             .transition-delay(550ms);
         }
     }
 
     &:nth-child(6) {
-        top: 768px;
+        top: 655px;
         z-index: 101;
 
         .b-scrollable-text .animate {

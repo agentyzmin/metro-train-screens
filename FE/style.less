@@ -7,7 +7,22 @@
     url('fonts/probanav2-regular-webfont.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
+}
 
+@font-face {
+    font-family: 'proba_nav2bold';
+    src: url('fonts/probanav2-bold-webfont.eot');
+    src: url('fonts/probanav2-bold-webfont.eot?#iefix') format('embedded-opentype'),
+    url('fonts/probanav2-bold-webfont.woff2') format('woff2'),
+    url('fonts/probanav2-bold-webfont.woff') format('woff'),
+    url('fonts/probanav2-bold-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html {
+    font-family: 'proba_nav2regular', Sans-serif;
+    color: #FFF;
 }
 
 html, body,
@@ -17,13 +32,11 @@ ul, li {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
-    font-family: 'proba_nav2regular', Sans-serif;
-    color: #FFF;
 }
 
 @import "styles/b-scrollable-text";
 @import "styles/b-inline-station";
+@import "styles/b-intermediate-stations";
 @import "styles/b-transfer-options";
 @import "styles/b-transfer-option";
 @import "styles/b-header";

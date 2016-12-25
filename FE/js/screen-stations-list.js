@@ -3,8 +3,8 @@
 
     var DISPLAY_STATIONS = 6;
     var TIME_UNIT = {
-        ua: 'хв',
-        en: 'min'
+        ua: 'хв.',
+        en: 'min.'
     };
     var INTERMEDIATE = {
         ua: ['%count станція', '%count станції', '%count станцій'],
@@ -65,7 +65,7 @@
             $stationsList.show().empty();
             for (i = 0; i < DISPLAY_STATIONS; ++i) {
                 (function(i) {
-                    var $transferOptions,
+                    var $transferOptions, $direction,
                         station = (data.length > DISPLAY_STATIONS && i === DISPLAY_STATIONS - 1)
                             ? data[data.length - 1]
                             : data[i],
@@ -73,6 +73,15 @@
 
                     if (data.length > DISPLAY_STATIONS && i === DISPLAY_STATIONS - 2) {
                         $html.html(inlineIntermediateStationsTmpl());
+                        $direction = $html.find('.b-intermediate-stations__direction');
+
+                        $html.css({ top: 0, height: '100%' });
+                        $direction.css('margin-top', '-150px');
+
+                        addTimeout(function() {
+                            $html.css({ top: '', height: '' });
+                            $direction.css('margin-top', '');
+                        }, 1);
                     }
                     else if (station) {
                         $html.html(inlineStationTmpl(station));
@@ -154,10 +163,12 @@
         function setNextStationWidth($row) {
             var $stationName = $row.find('.b-inline-station__name'),
                 $transferOptions = $row.find('.b-transfer-options'),
+                $timeLeft = $row.find('.b-inline-station__time-left'),
                 result = $row.width();
 
+            result -= $timeLeft.width();
             result -= $transferOptions.width();
-            result -= parseInt($transferOptions.css('right'));
+            result -= parseInt($stationName.css('margin-left'));
 
             $stationName.css('max-width', result);
         }
