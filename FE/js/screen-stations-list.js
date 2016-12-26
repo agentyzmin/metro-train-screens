@@ -3,8 +3,8 @@
 
     var DISPLAY_STATIONS = 6;
     var TIME_UNIT = {
-        ua: 'хв.',
-        en: 'min.'
+        ua: 'хв',
+        en: 'min'
     };
     var INTERMEDIATE = {
         ua: ['%count станція', '%count станції', '%count станцій'],
@@ -97,7 +97,10 @@
                     }
 
                     $stationsList.append($html);
-                    setNextStationWidth($html);
+
+                    if (station) {
+                        setNextStationWidth($html);
+                    }
                 } (i));
             }
 
@@ -161,10 +164,11 @@
         }
 
         function setNextStationWidth($row) {
-            var $stationName = $row.find('.b-inline-station__name'),
+            var $inlineStation = $row.find('.b-inline-station'),
+                $stationName = $row.find('.b-inline-station__name'),
                 $transferOptions = $row.find('.b-transfer-options'),
                 $timeLeft = $row.find('.b-inline-station__time-left'),
-                result = $row.width();
+                result = $inlineStation.width();
 
             result -= $timeLeft.width();
             result -= $transferOptions.width();
