@@ -23,7 +23,7 @@
         en: 'Transfer to Urban Rail'
     };
     var END_STATION_NOTIFICATION = {
-        ua: ['Поїзд далі не їде', 'Не забувайте свої речі'],
+        ua: ['Поїзд далі не їде', 'Не залишайте своїх речей'],
         en: ['This train terminates here', 'Don\'t forget your belongings']
     };
     var EXIT_RIGHT_NOTIFICATION = {
