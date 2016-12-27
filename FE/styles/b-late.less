@@ -1,0 +1,26 @@
+@import "_animate";
+
+@keyframes b-late {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.2;
+    }
+}
+
+.b-late {
+    display: inline-block;
+
+    width: 30px;
+    height: 30px;
+
+    background: silver;
+    border-radius: 50%;
+
+    .animation-name(b-late);
+    .animation-iteration-count(infinite);
+    .animation-direction(alternate);
+    .animation-duration(1s);
+}

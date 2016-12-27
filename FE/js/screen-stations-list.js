@@ -10,6 +10,7 @@
         ua: ['%count станція', '%count станції', '%count станцій'],
         en: ['%count station', '%count stations', '%count stations']
     };
+    var LATE_AFTER = 0; // Display "late" icon when LATE_AFTER seconds left
 
     var $window, $body, $header, $stationDetails, $stationsList,
         inlineStationTmpl, headerTmpl, inlineIntermediateStationsTmpl;
@@ -150,15 +151,22 @@
                     name = station.name[lang];
                     $line = $($lines.get(i));
 
-                    // TODO: Отображать точку если на таймере <60 секунд
-
                     $line
                         .find('.b-inline-station__name')
                         .scrollText(name);
 
-                    $line
-                        .find('.b-inline-station__time-left')
-                        .scrollText(time + ' ' + TIME_UNIT[lang]);
+                    if (station.travelTime >= LATE_AFTER) {
+                        $line
+                            .find('.b-inline-station__time-left')
+                            .scrollText(time + ' ' + TIME_UNIT[lang]);
+                    }
+                    else if (station.travelTime < LATE_AFTER && !station.isLate) {
+                        station.isLate = true;
+
+                        $line
+                            .find('.b-inline-station__time-left')
+                            .replaceWith('<div class="b-late"></div>');
+                    }
                 }
             }
         }
