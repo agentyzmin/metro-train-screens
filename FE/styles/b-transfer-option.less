@@ -1,3 +1,5 @@
+@import "_font";
+
 .b-transfer-option {
     &:before,
     &:after {
@@ -36,10 +38,10 @@
         margin-left: 2px;
 
         font-size: 34px;
-        font-feature-settings: "salt"; // TODO: Support of old browsers! https://helpx.adobe.com/typekit/using/open-type-syntax.html#salt
         line-height: 45px;
         text-align: center;
         vertical-align: middle;
+        .font-feature-settings("salt");
 
         &:first-child {
             border-bottom-left-radius: 10px;

@@ -1,4 +1,5 @@
 @import "_animate";
+@import "_font";
 
 @keyframes b-header__line-bg {
     0% {
@@ -28,7 +29,7 @@
 
 .b-header {
     background: silver;
-    font-family: 'proba_nav2bold', Sans-serif;
+    .font-bold();
 
     .b-clock {
         float: right;
@@ -75,7 +76,7 @@
         font-size: 35px;
         text-align: center;
         color: silver;
-        font-feature-settings: "salt"; // TODO: Support of old browsers! https://helpx.adobe.com/typekit/using/open-type-syntax.html#salt
+        .font-feature-settings("salt");
 
         content: "-";
 

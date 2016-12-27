@@ -1,0 +1,28 @@
+.font-light() {
+    font-family: "proba_nav2light", Sans-serif;
+}
+
+.font-medium() {
+    font-family: 'proba_nav2medium', Sans-serif;
+}
+
+.font-bold() {
+    font-family: 'proba_nav2bold', Sans-serif;
+}
+
+.font-face(@family, @file) {
+    font-family: @family;
+    src: url('fonts/@{file}.eot');
+    src: url('fonts/@{file}.eot?#iefix') format('embedded-opentype'),
+    url('fonts/@{file}.woff2') format('woff2'),
+    url('fonts/@{file}.woff') format('woff'),
+    url('fonts/@{file}.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.font-feature-settings(@a) {
+    -webkit-font-feature-settings: @a;
+       -moz-font-feature-settings: @a;
+            font-feature-settings: @a;
+}

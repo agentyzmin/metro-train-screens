@@ -1,4 +1,5 @@
 @import "_animate";
+@import "_font";
 
 @hidePreviousStationDuration: 500ms; // Check screen-station-details.js before update
 @lineDuration: 100ms;
@@ -33,8 +34,8 @@
     line-height: 125px;
     text-align: center;
     font-size: 60px;
-    font-family: "proba_nav2bold", Sans-serif;
-    font-feature-settings: "salt"; // TODO: Support of old browsers! https://helpx.adobe.com/typekit/using/open-type-syntax.html#salt
+    .font-feature-settings("salt");
+    .font-bold();
 
     border-radius: 50%;
     background: silver;
@@ -52,7 +53,7 @@
 
 .b-station-details__station-title {
     font-size: 60px;
-    font-family: "proba_nav2light", Sans-serif;
+    .font-light();
 
     .animate {
         .transition-delay(@titleDelay);
@@ -87,7 +88,7 @@
 
 .b-station-details__transfer-title {
     font-size: 48px;
-    font-family: "proba_nav2light", Sans-serif;
+    .font-light();
 
     margin-bottom: -5px;
 
@@ -170,7 +171,7 @@
 .b-station-details__end-line-2 {
     font-size: 45px;
     margin-top: 12px;
-    font-family: "proba_nav2light", Sans-serif;
+    .font-light();
 
     .animate {
         .transition-delay(@nextStationDelay);
