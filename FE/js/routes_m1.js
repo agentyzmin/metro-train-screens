@@ -69,12 +69,12 @@
         },
         transfer: {
             title: {
-                ua: 'Залізнична станція',
-                en: 'Sviatoshyn'
+                ua: 'Поруч',
+                en: 'Access to'
             },
             station: {
-                ua: '«Святошин»',
-                en: 'Railway Station'
+                ua: 'Святошин',
+                en: 'Sviatoshyn railway station'
             },
             trainStation: true
         }
@@ -165,11 +165,11 @@
         timeOnPlatform: timeOnPlatform(25),
         transfer: {
             title: {
-                ua: 'Вихід до',
+                ua: 'Вокзали',
                 en: 'Transfer to'
             },
             station: {
-                ua: 'Залізничного вокзалу',
+                ua: 'Центральний, Південний',
                 en: 'Railway station'
             },
             trams: ['T3'],

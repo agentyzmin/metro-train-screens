@@ -11,15 +11,15 @@
         en: 'This station is'
     };
     var TRANSFER_TO_TRAM = {
-        ua: 'Пересадка на швидкісний трамвай',
-        en: 'Transfer to Express Tram'
+        ua: 'Поруч',
+        en: 'Access to'
     };
     var TRANSFER_TO_METRO = {
         ua: 'Перехід на станцію',
         en: 'Transfer to'
     };
     var TRANSFER_TO_URBAN_RAIL = {
-        ua: 'Вихід до міської електрички',
+        ua: 'Пересадка на міську електричку',
         en: 'Transfer to Urban Rail'
     };
     var END_STATION_NOTIFICATION = {
@@ -27,8 +27,8 @@
         en: ['This train terminates here', 'Don\'t forget your belongings']
     };
     var EXIT_RIGHT_NOTIFICATION = {
-        ua: 'Вихід на праву сторону',
-        en: 'Exit to the right'
+        ua: 'Платформа праворуч',
+        en: 'Platform on the right'
     };
 
     var $window, $body, $header, $stationDetails, $stationsList, stationDetailTmpl;
