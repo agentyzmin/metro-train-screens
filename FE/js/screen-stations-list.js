@@ -10,7 +10,7 @@
         ua: ['%count станція', '%count станції', '%count станцій'],
         en: ['%count station', '%count stations', '%count stations']
     };
-    var LATE_AFTER = 0; // Display "late" icon when LATE_AFTER seconds left
+    var LATE_AFTER = 30; // Display "late" icon when LATE_AFTER seconds left
 
     var $window, $body, $header, $stationDetails, $stationsList,
         inlineStationTmpl, headerTmpl, inlineIntermediateStationsTmpl;
@@ -115,7 +115,7 @@
                 });
 
                 updateTexts();
-            }, 5000);
+            }, 8000);
         }
 
         function updateTexts() {

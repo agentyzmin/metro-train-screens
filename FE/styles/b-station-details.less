@@ -4,8 +4,8 @@
 @lineDuration: 100ms;
 @titleDelay: 100ms;
 @nameDelay: 200ms;
-@nextTitleDelay: 300ms;
-@nextStationDelay: 400ms;
+@nextTitleDelay: 1s;
+@nextStationDelay: 1.1s;
 
 .b-station-details {
     position: relative;
@@ -32,7 +32,9 @@
 
     line-height: 125px;
     text-align: center;
-    font-size: 55px;
+    font-size: 60px;
+    font-family: "proba_nav2bold", Sans-serif;
+    font-feature-settings: "salt"; // TODO: Support of old browsers! https://helpx.adobe.com/typekit/using/open-type-syntax.html#salt
 
     border-radius: 50%;
     background: silver;
@@ -50,6 +52,7 @@
 
 .b-station-details__station-title {
     font-size: 60px;
+    font-family: "proba_nav2light", Sans-serif;
 
     .animate {
         .transition-delay(@titleDelay);
@@ -84,6 +87,8 @@
 
 .b-station-details__transfer-title {
     font-size: 48px;
+    font-family: "proba_nav2light", Sans-serif;
+
     margin-bottom: -5px;
 
     .animate {
@@ -105,11 +110,11 @@
 
         &:before,
         &:after {
-            width: 90px;
-            height: 90px;
+            width: 70px;
+            height: 70px;
 
             position: relative;
-            top: -10px;
+            top: 0;
             left: -10px;
         }
     }
