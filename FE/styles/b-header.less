@@ -1,6 +1,6 @@
 @import "_animate";
 
-@keyframes header__line-bg {
+@keyframes b-header__line-bg {
     0% {
         width: 0;
         height: 0;
@@ -16,7 +16,7 @@
     }
 }
 
-@keyframes header__line-text {
+@keyframes b-header__line-text {
     0% {
         top: -45px;
     }
@@ -67,7 +67,7 @@
 
         content: "";
 
-        .animation-name(header__line-bg);
+        .animation-name(b-header__line-bg);
     }
 
     &:after {
@@ -78,7 +78,7 @@
 
         content: "-";
 
-        .animation-name(header__line-text);
+        .animation-name(b-header__line-text);
         .animation-timing-function(ease-in-out);
     }
 }
