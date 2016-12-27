@@ -54,6 +54,13 @@
                 previousScreen.stop();
             }
 
+            if (previousScreen && previousScreen.name !== that.name) {
+                // Wait until screen change animation is complete
+                addTimeout(function() {
+                    $stationDetails.empty().hide();
+                }, 1000);
+            }
+
             app.screens.current = that;
             $body.addClass('b-screen_stations-list');
 

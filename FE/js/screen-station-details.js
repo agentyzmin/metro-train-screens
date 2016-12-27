@@ -72,14 +72,15 @@
                 previousScreen.stop();
             }
 
+            if (previousScreen && previousScreen.name !== that.name) {
+                $stationsList.empty().hide();
+                $header.empty();
+
+                $stationDetails.show();
+            }
+
             app.screens.current = that;
             $body.addClass('b-screen_station-details');
-
-            if (previousScreen && previousScreen.name !== that.name) {
-                $stationsList.hide();
-                $stationDetails.show();
-                $header.empty();
-            }
 
             // Screen change animation
             if (previousScreen && previousScreen.name === that.name) {
