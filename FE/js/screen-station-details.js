@@ -113,14 +113,12 @@
         }
 
         function init() {
-            var $line,
-                params = $.extend({ isEnd: options.isEnd }, station);
+            var params = $.extend({ isEnd: options.isEnd }, station);
 
             $stationDetails.html(stationDetailTmpl(params));
             $stationTitle = $stationDetails.find('.b-station-details__station-title');
             $stationName1 = $stationDetails.find('.b-station-details__station-name-1');
             $stationName2 = $stationDetails.find('.b-station-details__station-name-2');
-            $line = $stationDetails.find('.b-station-details__line');
 
             if (station.transfer) {
                 $transferTitle = $stationDetails.find('.b-station-details__transfer-title');
@@ -138,16 +136,6 @@
 
             updateTexts();
             addInterval(updateTexts, 5000);
-
-            $line.css('opacity', '0.5');
-
-            addTimeout(function () {
-                $line
-                    .addClass('animate')
-                    .css('opacity', '');
-            }, 1);
-
-            $line.find('div').scrollText(station.line);
         }
 
         function updateTexts() {

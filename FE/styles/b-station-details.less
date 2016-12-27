@@ -2,11 +2,30 @@
 @import "_font";
 
 @hidePreviousStationDuration: 500ms; // Check screen-station-details.js before update
-@lineDuration: 100ms;
 @titleDelay: 100ms;
 @nameDelay: 200ms;
 @nextTitleDelay: 1s;
 @nextStationDelay: 1.1s;
+
+@keyframes b-station-details__header-bg {
+    0% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes b-station-details__header-text {
+    0% {
+        margin-top: -82px;
+    }
+
+    100% {
+        margin-top: 0;
+    }
+}
 
 .b-station-details {
     position: relative;
@@ -31,23 +50,30 @@
     height: 125px;
     overflow: hidden;
 
-    line-height: 125px;
-    text-align: center;
-    font-size: 60px;
-    .font-feature-settings("salt");
-    .font-bold();
-
     border-radius: 50%;
     background: silver;
-    text-transform: uppercase;
-
-    opacity: 1;
 
     /* This fixes the overflow:hidden in Chrome */
     -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
 
-    &.animate {
-        .transition(opacity @lineDuration);
+    .animation-name("b-station-details__header-bg");
+    .animation-duration(0.5s);
+
+    &:before {
+        display: block;
+
+        line-height: 125px;
+        text-align: center;
+        font-size: 60px;
+        .font-feature-settings("salt");
+        .font-bold();
+
+        content: "-";
+
+        .animation-name("b-station-details__header-text");
+        .animation-duration(0.7s);
+        .animation-delay(@nameDelay);
+        .animation-fill-mode(backwards);
     }
 }
 
