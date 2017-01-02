@@ -3,14 +3,6 @@
 
     font-size: 48px;
 
-    .b-transfer-options {
-        height: 64px;
-
-        position: absolute;
-        top: 7px;
-        right: 0;
-    }
-
     .b-late {
         position: relative;
         top: 10px;
@@ -37,4 +29,20 @@
     text-align: right;
     letter-spacing: -2px;
     color: rgb(137, 152, 176)
+}
+
+.b-inline-station__transfer {
+    display: inline-block;
+    height: 64px;
+
+    position: absolute;
+    top: 7px;
+    right: 0;
+
+    white-space: nowrap;
+
+    .b-transfer-icon {
+        display: inline-block;
+        vertical-align: middle;
+    }
 }

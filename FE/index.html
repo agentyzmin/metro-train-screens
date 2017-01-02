@@ -29,24 +29,23 @@
     <div class="b-inline-station">
         <div class="b-inline-station__time-left"></div>
         <div class="b-inline-station__name"></div>
-
-        <div class="b-transfer-options">
+        <div class="b-inline-station__transfer">
             {{? it.transfer && it.transfer.trams }}
-                <div class="b-transfer-option b-transfer-option_tram">
+                <div class="b-transfer-icon b-transfer-icon_tram">
                     {{~it.transfer.trams :value}}<div>{{=value}}</div>{{~}}
                 </div>
             {{?}}
 
             {{? it.transfer && it.transfer.urbanRail }}
-                <div class="b-transfer-option b-transfer-option_urban-rail"></div>
+                <div class="b-transfer-icon b-transfer-icon_urban-rail"></div>
             {{?}}
 
             {{? it.transfer && it.transfer.trainStation }}
-                <div class="b-transfer-option b-transfer-option_train-station"></div>
+                <div class="b-transfer-icon b-transfer-icon_train-station"></div>
             {{?}}
 
             {{? it.transfer && it.transfer.metro }}
-                <div class="b-transfer-option b-transfer-option_metro b-transfer-option_with-arrow b-transfer-option_metro-{{=it.transfer.metro.toLowerCase()}}"></div>
+                <div class="b-transfer-icon b-transfer-icon_metro b-transfer-icon_with-arrow b-transfer-icon_metro-{{=it.transfer.metro.toLowerCase()}}"></div>
             {{?}}
         </div>
     </div>
@@ -80,20 +79,20 @@
         <div class="b-station-details__transfer">
             <div class="b-station-details__transfer-title"></div>
 
-            <div class="b-station-details__transfer-option-wrap">
+            <div class="b-station-details__transfer-icon-wrap">
                 {{? it.transfer && it.transfer.trainStation }}
-                <div class="b-transfer-option b-transfer-option_train-station"></div>
+                <div class="b-transfer-icon b-transfer-icon_train-station"></div>
 
                 {{?? it.transfer && it.transfer.trams }}
-                <div class="b-transfer-option b-transfer-option_tram">
+                <div class="b-transfer-icon b-transfer-icon_tram">
                     {{~it.transfer.trams :value}}<div>{{=value}}</div>{{~}}
                 </div>
 
                 {{?? it.transfer && it.transfer.urbanRail }}
-                <div class="b-transfer-option b-transfer-option_urban-rail"></div>
+                <div class="b-transfer-icon b-transfer-icon_urban-rail"></div>
 
                 {{?? it.transfer && it.transfer.metro }}
-                <div class="b-transfer-option b-transfer-option_metro b-transfer-option_metro-{{=it.transfer.metro.toLowerCase()}}"></div>
+                <div class="b-transfer-icon b-transfer-icon_metro b-transfer-icon_metro-{{=it.transfer.metro.toLowerCase()}}"></div>
                 {{?}}
 
                 <div class="b-station-details__transfer-station"></div>
