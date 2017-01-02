@@ -45,7 +45,7 @@
             {{?}}
 
             {{? it.transfer && it.transfer.metro }}
-                <div class="b-transfer-icon b-transfer-icon_metro b-transfer-icon_with-arrow b-transfer-icon_metro-{{=it.transfer.metro.toLowerCase()}}"></div>
+                <div class="b-transfer-icon b-transfer-icon_metro b-transfer-icon_with-arrow b-transfer-icon_metro-{{=it.transfer.metro.route.toLowerCase()}}"></div>
             {{?}}
         </div>
     </div>
@@ -76,29 +76,43 @@
         {{?}}
 
         {{? it.transfer}}
-        <div class="b-station-details__transfer">
+        <div class="b-station-details__transfer"></div>
+        {{?}}
+    </div>
+</script>
+
+<script type="text/x-template" id="tmpl-station-details-transfer">
+    <div class="b-station-details__transfer">
+        {{~it :option}}
+        <div class="b-station-details__transfer-option">
             <div class="b-station-details__transfer-title"></div>
 
-            <div class="b-station-details__transfer-icon-wrap">
-                {{? it.transfer && it.transfer.trainStation }}
+            <div class="b-station-details__transfer-name-wrap">
+                {{? option.type === "trainStation"}}
                 <div class="b-transfer-icon b-transfer-icon_train-station"></div>
 
-                {{?? it.transfer && it.transfer.trams }}
+                {{?? option.type === "trams"}}
                 <div class="b-transfer-icon b-transfer-icon_tram">
-                    {{~it.transfer.trams :value}}<div>{{=value}}</div>{{~}}
+                    {{~option.routes :route}}<div>{{=route}}</div>{{~}}
                 </div>
 
-                {{?? it.transfer && it.transfer.urbanRail }}
+                {{?? option.type === "urbanRail"}}
                 <div class="b-transfer-icon b-transfer-icon_urban-rail"></div>
 
-                {{?? it.transfer && it.transfer.metro }}
-                <div class="b-transfer-icon b-transfer-icon_metro b-transfer-icon_metro-{{=it.transfer.metro.toLowerCase()}}"></div>
+                {{?? option.type === "metro"}}
+                <div class="b-transfer-icon b-transfer-icon_metro b-transfer-icon_metro-{{=option.route.toLowerCase()}}"></div>
+
+                {{?? option.type === "airport"}}
+                <div class="b-transfer-icon b-transfer-icon_airport"></div>
+
+                {{?? option.type === "busStation"}}
+                <div class="b-transfer-icon b-transfer-icon_bus-station"></div>
                 {{?}}
 
-                <div class="b-station-details__transfer-station"></div>
+                <div class="b-station-details__transfer-name"></div>
             </div>
         </div>
-        {{?}}
+        {{~}}
     </div>
 </script>
 

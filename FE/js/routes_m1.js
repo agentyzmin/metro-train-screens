@@ -1,6 +1,19 @@
 ﻿(function() {
     "use strict";
 
+    var TRANSFER_TO_TRAM = {
+        ua: 'Поруч',
+        en: 'Access to'
+    };
+    var TRANSFER_TO_METRO = {
+        ua: 'Перехід на станцію',
+        en: 'Transfer to'
+    };
+    var TRANSFER_TO_URBAN_RAIL = {
+        ua: 'Пересадка на міську електричку',
+        en: 'Transfer to Urban Rail'
+    };
+
     if (!window.routes) {
         window.routes = {};
     }
@@ -68,15 +81,10 @@
             current: '0409'
         },
         transfer: {
-            title: {
-                ua: 'Поруч',
-                en: 'Access to'
-            },
-            station: {
-                ua: 'Святошин',
-                en: 'Sviatoshyn railway station'
-            },
-            trainStation: true
+            trainStation: {
+                ua: [TRANSFER_TO_TRAM.ua, 'Святошин'],
+                en: [TRANSFER_TO_TRAM.en, 'Sviatoshyn railway station']
+            }
         }
     });
 
@@ -105,11 +113,10 @@
         timeToNextStation: timeToNextStation(170),
         timeOnPlatform: timeOnPlatform(15),
         transfer: {
-            station: {
-                ua: 'Рубежівський',
-                en: 'Rubezhivskyi'
-            },
-            urbanRail: true
+            urbanRail: {
+                ua: [TRANSFER_TO_URBAN_RAIL.ua, 'Рубежівський'],
+                en: [TRANSFER_TO_URBAN_RAIL.en, 'Rubezhivskyi']
+            }
         },
         DTMF: {
             next: '0403',
@@ -142,11 +149,11 @@
         timeToNextStation: timeToNextStation(105),
         timeOnPlatform: timeOnPlatform(15),
         transfer: {
-            station: {
-                ua: 'Політехнічна',
-                en: 'Politekhnichnа'
-            },
-            trams: ['T3']
+            trams: {
+                ua: [TRANSFER_TO_TRAM.ua, 'Політехнічна'],
+                en: [TRANSFER_TO_TRAM.en, 'Politekhnichnа'],
+                routes: ['T3']
+            }
         },
         DTMF: {
             next: '0309',
@@ -164,17 +171,32 @@
         timeToNextStation: timeToNextStation(95),
         timeOnPlatform: timeOnPlatform(25),
         transfer: {
-            title: {
-                ua: 'Вокзали',
-                en: 'Transfer to'
+            trainStation: {
+                ua: ['Вокзали', 'Центральний, Південний'],
+                en: ['Long distance trains'],
+                screen: 1
             },
-            station: {
-                ua: 'Центральний, Південний',
-                en: 'Railway station'
+            airport: {
+                ua: ['Автобус до аеропорту', '«Бориспіль»'],
+                en: ['Boryspil (KBP) airport bus'],
+                screen: 1
             },
-            trams: ['T3'],
-            trainStation: true,
-            urbanRail: true
+            busStation: {
+                ua: ['Автостанція «Київ»'],
+                en: ['Kyiv Bus Station'],
+                screen: 2
+            },
+            urbanRail: {
+                ua: ['Київ-Пасажирський'],
+                en: ['Kyiv-Passazhyrskyi'],
+                screen: 2
+            },
+            trams: {
+                ua: ['Старовокзальна'],
+                en: ['Starovokzalna'],
+                routes: ['T3'],
+                screen: 2
+            }
         },
         DTMF: {
             next: '0307',
@@ -207,11 +229,11 @@
         timeToNextStation: timeToNextStation(90),
         timeOnPlatform: timeOnPlatform(30),
         transfer: {
-            station: {
-                ua: 'Золоті ворота',
-                en: 'Zoloti Vorota'
-            },
-            metro: 'm3'
+            metro: {
+                ua: [TRANSFER_TO_METRO.ua, 'Золоті ворота'],
+                en: [TRANSFER_TO_METRO.en, 'Zoloti Vorota'],
+                route: 'm3'
+            }
         },
         DTMF: {
             next: '0302',
@@ -229,11 +251,11 @@
         timeToNextStation: timeToNextStation(130),
         timeOnPlatform: timeOnPlatform(30),
         transfer: {
-            station: {
-                ua: 'Майдан Незалежності',
-                en: 'Maidan Nezalezhnosti'
-            },
-            metro: 'm2'
+            metro: {
+                ua: [TRANSFER_TO_METRO.ua, 'Майдан Незалежності'],
+                en: [TRANSFER_TO_METRO.en, 'Maidan Nezalezhnosti'],
+                route: 'm2'
+            }
         },
         DTMF: {
             next: '0300',
@@ -297,11 +319,10 @@
         timeToNextStation: timeToNextStation(100),
         timeOnPlatform: timeOnPlatform(15),
         transfer: {
-            station: {
-                ua: 'Лівобережна',
-                en: 'Livoberezhna'
-            },
-            urbanRail: true
+            urbanRail: {
+                ua: [TRANSFER_TO_URBAN_RAIL.ua, 'Лівобережна'],
+                en: [TRANSFER_TO_URBAN_RAIL.en, 'Livoberezhna']
+            }
         },
         DTMF: {
             next: '0201',

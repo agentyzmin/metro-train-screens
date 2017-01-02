@@ -10,18 +10,6 @@
         ua: 'Станція',
         en: 'This station is'
     };
-    var TRANSFER_TO_TRAM = {
-        ua: 'Поруч',
-        en: 'Access to'
-    };
-    var TRANSFER_TO_METRO = {
-        ua: 'Перехід на станцію',
-        en: 'Transfer to'
-    };
-    var TRANSFER_TO_URBAN_RAIL = {
-        ua: 'Пересадка на міську електричку',
-        en: 'Transfer to Urban Rail'
-    };
     var END_STATION_NOTIFICATION = {
         ua: ['Поїзд далі не їде', 'Не залишайте своїх речей'],
         en: ['This train terminates here', 'Don\'t forget your belongings']
@@ -31,7 +19,7 @@
         en: 'Platform on the right'
     };
 
-    var $window, $body, $header, $stationDetails, $stationsList, stationDetailTmpl;
+    var $window, $body, $header, $stationDetails, $stationsList, stationDetailTmpl, transferTmpl;
 
     if (!window.app) {
         window.app = {};
@@ -48,13 +36,16 @@
         $stationDetails = $('.b-station-details');
         $stationsList = $('.b-stations-list');
         stationDetailTmpl = doT.template($('#tmpl-station-details').html());
+        transferTmpl = doT.template($('#tmpl-station-details-transfer').html());
 
         app.screens.StationDetails = Screen;
     });
 
     function Screen(station, options) {
-        var lang, $stationTitle, $stationName1, $stationName2, $transferTitle, $transferStation,
-            $endLine1, $endLine2, $exitMessage,
+        var $stationTitle, $stationName1, $stationName2, $endLine1, $endLine2, $exitMessage,
+            lang = 'ua',
+            transferScreens = [],
+            transferScreen = 0,
             that = this,
             intervals = [],
             timeouts = [];
@@ -121,9 +112,19 @@
             $stationName1 = $stationDetails.find('.b-station-details__station-name-1');
             $stationName2 = $stationDetails.find('.b-station-details__station-name-2');
 
+            // Transform transfer screen object into array
             if (station.transfer) {
-                $transferTitle = $stationDetails.find('.b-station-details__transfer-title');
-                $transferStation = $stationDetails.find('.b-station-details__transfer-station');
+                Object.keys(station.transfer).forEach(function(type) {
+                    var option = $.extend({ type: type }, station.transfer[type]),
+                        screen = option.screen || 1;
+
+                    transferScreens[screen] = transferScreens[screen] || [];
+                    transferScreens[screen].push(option);
+                });
+
+                transferScreens = transferScreens.filter(function(screen) {
+                    return screen && screen.length;
+                });
             }
 
             if (station.exit === 'right') {
@@ -135,67 +136,68 @@
                 $endLine2 = $stationDetails.find('.b-station-details__end-line-2');
             }
 
-            updateTexts();
+            updateTexts(true);
             addInterval(updateTexts, 5000);
         }
 
-        function updateTexts() {
-            var title, line1, line2, transferTitleText, transferStationText,
-                isNext = options.isNext,
-                transfer = station.transfer || {};
+        function updateTexts(isFirstUpdate) {
+            var title, line1, line2, transferTitles, transferNames,
+                isNext = options.isNext;
 
-            lang = (lang === 'ua' ? 'en' : 'ua');
-
-            if (isNext) {
-                title = NEXT_STATION[lang];
-            } else {
-                title = CURRENT_STATION[lang];
-            }
-
-            line1 = station.name[lang].split(' ')[0];
-            line2 = station.name[lang].split(' ')[1];
-
-            $stationTitle.scrollText(title);
-            $stationName1.scrollText(line1);
-
-            if (line2) {
-                $stationName2.scrollText(line2);
-            }
-
-            if (station.transfer) {
-                switch (true) {
-                    case !!transfer.trainStation:
-                        transferTitleText = transfer.title[lang];
-                        transferStationText = transfer.station[lang];
-                        break;
-
-                    case !!transfer.trams:
-                        transferTitleText = TRANSFER_TO_TRAM[lang];
-                        transferStationText = transfer.station[lang];
-                        break;
-
-                    case !!transfer.urbanRail:
-                        transferTitleText = TRANSFER_TO_URBAN_RAIL[lang];
-                        transferStationText = transfer.station[lang];
-                        break;
-
-                    case !!transfer.metro:
-                        transferTitleText = TRANSFER_TO_METRO[lang];
-                        transferStationText = transfer.station[lang];
-                        break;
+            // Station name
+            if (transferScreen === 0) {
+                if (isNext) {
+                    title = NEXT_STATION[lang];
+                } else {
+                    title = CURRENT_STATION[lang];
                 }
 
-                if (transferTitleText && transferStationText) {
-                    $transferTitle.scrollText(transferTitleText);
-                    $transferStation.scrollText(transferStationText);
+                line1 = station.name[lang].split(' ')[0];
+                line2 = station.name[lang].split(' ')[1];
+
+                $stationTitle.scrollText(title);
+                $stationName1.scrollText(line1);
+
+                if (line2) {
+                    $stationName2.scrollText(line2);
                 }
             }
 
-            if (station.exit === 'right') {
+            // Transfer options
+            if (transferScreens.length) {
+                if ((transferScreens.length === 1 && isFirstUpdate) || transferScreens.length > 1) {
+                    $stationDetails
+                        .find('.b-station-details__transfer')
+                        .replaceWith(transferTmpl(transferScreens[transferScreen]));
+                }
+
+                transferTitles = $stationDetails.find('.b-station-details__transfer-title');
+                transferNames = $stationDetails.find('.b-station-details__transfer-name');
+
+                transferScreens[transferScreen].forEach(function(transferOption, i) {
+                    if (transferOption[lang].length === 1) {
+                        $(transferTitles.get(i)).hide();
+                        $(transferNames.get(i)).scrollText(transferOption[lang][0]);
+                    } else {
+                        $(transferTitles.get(i)).show().scrollText(transferOption[lang][0]);
+                        $(transferNames.get(i)).scrollText(transferOption[lang][1]);
+                    }
+                });
+
+                if (transferScreen === transferScreens.length - 1) {
+                    transferScreen = 0;
+                    lang = (lang === 'ua' ? 'en' : 'ua');
+                } else {
+                    ++transferScreen;
+                }
+            }
+
+            // Additional information texts
+            if (station.exit === 'right' && transferScreen === 0) {
                 $exitMessage.scrollText(EXIT_RIGHT_NOTIFICATION[lang]);
             }
 
-            if (options.isEnd) {
+            if (options.isEnd && transferScreen === 0) {
                 line1 = END_STATION_NOTIFICATION[lang][0];
                 line2 = END_STATION_NOTIFICATION[lang][1];
 
