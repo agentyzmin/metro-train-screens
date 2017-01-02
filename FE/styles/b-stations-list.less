@@ -1,13 +1,25 @@
 @import "_animate";
 
+@keyframes b-stations-list__line {
+    0% {
+        height: 0;
+    }
+
+    100% {
+        height: 111px;
+    }
+}
+
 .b-stations-list__line {
-    .transition(top 1s, height 1s);
+    .animation-name(b-stations-list__line);
+    .animation-fill-mode(both);
+    .animation-duration(1s);
+    .transition(top 1s);
 
     position: fixed;
     top: 0;
 
     width: 100%;
-    height: 111px;
     overflow: hidden;
 
     background: rgb(42, 41, 66);
