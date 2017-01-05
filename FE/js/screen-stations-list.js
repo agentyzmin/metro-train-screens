@@ -117,7 +117,7 @@
                 // Travel time decrease
                 data.forEach(function(station) {
                     if (station) {
-                        station.travelTime -= 5;
+                        station.travelTime -= 8;
                     }
                 });
 
