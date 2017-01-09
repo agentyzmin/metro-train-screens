@@ -14,7 +14,7 @@
     display: inline-block;
     margin-left: 29px;
 
-    font-size: 62px;
+    font-size: 60px;
     vertical-align: middle;
 }
 
@@ -44,5 +44,20 @@
     .b-transfer-icon {
         display: inline-block;
         vertical-align: middle;
+        margin-left: 10px;
+
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+
+    .b-transfer-icon_tram {
+        >div {
+            height: 40px;
+            width: 45px;
+
+            font-size: 27px;
+            line-height: 40px;
+        }
     }
 }
