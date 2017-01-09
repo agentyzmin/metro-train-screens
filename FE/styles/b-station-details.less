@@ -7,7 +7,8 @@
 @nextTitleDelay: 1s;
 @nextStationDelay: 1.1s;
 
-@keyframes b-station-details__header-bg {
+
+.b-station-details__header-bg-keyframes() {
     0% {
         opacity: 0.5;
     }
@@ -17,7 +18,7 @@
     }
 }
 
-@keyframes b-station-details__header-text {
+.b-station-details__header-text-keyframes() {
     0% {
         margin-top: -82px;
     }
@@ -27,7 +28,7 @@
     }
 }
 
-@keyframes b-station-details__transfer-fade-in {
+.b-station-details__transfer-fade-in-keyframes() {
     0% {
         opacity: 0;
     }
@@ -37,7 +38,7 @@
     }
 }
 
-@keyframes b-station-details__transfer-fade-out {
+.b-station-details__transfer-fade-out-keyframes() {
     0% {
         opacity: 0.99;
     }
@@ -47,7 +48,7 @@
     }
 }
 
-@keyframes b-station-details__transfer-icon {
+.b-station-details__transfer-icon-keyframes() {
     0% {
         top: -70px;
     }
@@ -56,6 +57,36 @@
         top: 0;
     }
 }
+
+@-webkit-keyframes b-station-details__header-bg { .b-station-details__header-bg-keyframes }
+   @-moz-keyframes b-station-details__header-bg { .b-station-details__header-bg-keyframes }
+    @-ms-keyframes b-station-details__header-bg { .b-station-details__header-bg-keyframes }
+     @-o-keyframes b-station-details__header-bg { .b-station-details__header-bg-keyframes }
+        @keyframes b-station-details__header-bg { .b-station-details__header-bg-keyframes }
+
+@-webkit-keyframes b-station-details__header-text { .b-station-details__header-text-keyframes }
+   @-moz-keyframes b-station-details__header-text { .b-station-details__header-text-keyframes }
+    @-ms-keyframes b-station-details__header-text { .b-station-details__header-text-keyframes }
+     @-o-keyframes b-station-details__header-text { .b-station-details__header-text-keyframes }
+        @keyframes b-station-details__header-text { .b-station-details__header-text-keyframes }
+
+@-webkit-keyframes b-station-details__transfer-fade-in { .b-station-details__transfer-fade-in-keyframes }
+   @-moz-keyframes b-station-details__transfer-fade-in { .b-station-details__transfer-fade-in-keyframes }
+    @-ms-keyframes b-station-details__transfer-fade-in { .b-station-details__transfer-fade-in-keyframes }
+     @-o-keyframes b-station-details__transfer-fade-in { .b-station-details__transfer-fade-in-keyframes }
+        @keyframes b-station-details__transfer-fade-in { .b-station-details__transfer-fade-in-keyframes }
+
+@-webkit-keyframes b-station-details__transfer-fade-out { .b-station-details__transfer-fade-out-keyframes }
+   @-moz-keyframes b-station-details__transfer-fade-out { .b-station-details__transfer-fade-out-keyframes }
+    @-ms-keyframes b-station-details__transfer-fade-out { .b-station-details__transfer-fade-out-keyframes }
+     @-o-keyframes b-station-details__transfer-fade-out { .b-station-details__transfer-fade-out-keyframes }
+        @keyframes b-station-details__transfer-fade-out { .b-station-details__transfer-fade-out-keyframes }
+
+@-webkit-keyframes b-station-details__transfer-icon { .b-station-details__transfer-icon-keyframes }
+   @-moz-keyframes b-station-details__transfer-icon { .b-station-details__transfer-icon-keyframes }
+    @-ms-keyframes b-station-details__transfer-icon { .b-station-details__transfer-icon-keyframes }
+     @-o-keyframes b-station-details__transfer-icon { .b-station-details__transfer-icon-keyframes }
+        @keyframes b-station-details__transfer-icon { .b-station-details__transfer-icon-keyframes }
 
 .b-station-details {
     position: relative;

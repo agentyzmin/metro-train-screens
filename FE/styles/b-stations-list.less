@@ -1,6 +1,6 @@
 @import "_animate";
 
-@keyframes b-stations-list__line {
+.b-stations-list__line-keyframes() {
     0% {
         height: 0;
     }
@@ -9,6 +9,13 @@
         height: 111px;
     }
 }
+
+
+@-webkit-keyframes b-stations-list__line { .b-stations-list__line-keyframes }
+   @-moz-keyframes b-stations-list__line { .b-stations-list__line-keyframes }
+    @-ms-keyframes b-stations-list__line { .b-stations-list__line-keyframes }
+     @-o-keyframes b-stations-list__line { .b-stations-list__line-keyframes }
+        @keyframes b-stations-list__line { .b-stations-list__line-keyframes }
 
 .b-stations-list__line {
     .animation-name(b-stations-list__line);

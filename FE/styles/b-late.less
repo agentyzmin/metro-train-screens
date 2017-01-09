@@ -1,6 +1,6 @@
 @import "_animate";
 
-@keyframes b-late {
+.b-late-keyframes() {
     0% {
         opacity: 1;
     }
@@ -9,6 +9,12 @@
         opacity: 0.2;
     }
 }
+
+@-webkit-keyframes b-late { .b-late-keyframes }
+   @-moz-keyframes b-late { .b-late-keyframes }
+    @-ms-keyframes b-late { .b-late-keyframes }
+     @-o-keyframes b-late { .b-late-keyframes }
+        @keyframes b-late { .b-late-keyframes }
 
 .b-late {
     display: inline-block;

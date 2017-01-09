@@ -1,7 +1,7 @@
 @import "_animate";
 @import "_font";
 
-@keyframes b-header__line-bg {
+.b-header__line-bg-keyframes() {
     0% {
         width: 0;
         height: 0;
@@ -17,7 +17,7 @@
     }
 }
 
-@keyframes b-header__line-text {
+.b-header__line-text-keyframes() {
     0% {
         top: -45px;
     }
@@ -26,6 +26,19 @@
         top: 0;
     }
 }
+
+@-webkit-keyframes b-header__line-bg { .b-header__line-bg-keyframes }
+   @-moz-keyframes b-header__line-bg { .b-header__line-bg-keyframes }
+    @-ms-keyframes b-header__line-bg { .b-header__line-bg-keyframes }
+     @-o-keyframes b-header__line-bg { .b-header__line-bg-keyframes }
+        @keyframes b-header__line-bg { .b-header__line-bg-keyframes }
+
+@-webkit-keyframes b-header__line-text { .b-header__line-text-keyframes }
+   @-moz-keyframes b-header__line-text { .b-header__line-text-keyframes }
+    @-ms-keyframes b-header__line-text { .b-header__line-text-keyframes }
+     @-o-keyframes b-header__line-text { .b-header__line-text-keyframes }
+        @keyframes b-header__line-text { .b-header__line-text-keyframes }
+
 
 .b-header {
     background: silver;
