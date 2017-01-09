@@ -208,17 +208,6 @@
     }
 
     .b-transfer-icon {
-        height: 70px;
-        overflow-y: hidden;
-
-        position: relative;
-        top: 0;
-        left: -10px;
-
-        min-width: 90px;
-        margin-left: -90px;
-        vertical-align: middle;
-
         &:before,
         &:after {
             width: 70px;
@@ -230,14 +219,32 @@
         margin-right: 5px;
 
         &:before {
-            margin-right: 25px;
+            margin-right: 32px;
         }
     }
+}
+
+.b-station-details__transfer-icon-wrap {
+    display: inline-block;
+
+    height: 70px;
+    overflow-y: hidden;
+
+    position: relative;
+    top: 0;
+    left: -10px;
+
+    min-width: 90px;
+    margin-left: -90px;
+    vertical-align: middle;
 }
 
 .b-station-details__transfer-name {
     font-size: 60px;
     vertical-align: middle;
+
+    position: relative;
+    left: -4px;
 
     .animate {
         .transition-delay(@nextStationDelay);
@@ -308,16 +315,12 @@
     }
 
     .b-transfer-icon {
-        &:before,
-        &:after,
-        div { // Tram routes
-            position: relative;
+        position: relative;
 
-            .animation-name(b-station-details__transfer-icon);
-            .animation-fill-mode(backwards);
-            .animation-duration(0.7s);
-            .animation-delay(@nextTitleDelay);
-        }
+        .animation-name(b-station-details__transfer-icon);
+        .animation-fill-mode(backwards);
+        .animation-duration(0.7s);
+        .animation-delay(@nextTitleDelay);
     }
 }
 

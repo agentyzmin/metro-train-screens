@@ -88,26 +88,28 @@
             <div class="b-station-details__transfer-title"></div>
 
             <div class="b-station-details__transfer-name-wrap">
-                {{? option.type === "trainStation"}}
-                <div class="b-transfer-icon b-transfer-icon_train-station"></div>
+                <div class="b-station-details__transfer-icon-wrap">
+                    {{? option.type === "trainStation"}}
+                    <div class="b-transfer-icon b-transfer-icon_train-station"></div>
 
-                {{?? option.type === "trams"}}
-                <div class="b-transfer-icon b-transfer-icon_tram">
-                    {{~option.routes :route}}<div>{{=route}}</div>{{~}}
+                    {{?? option.type === "trams"}}
+                    <div class="b-transfer-icon b-transfer-icon_tram">
+                        {{~option.routes :route}}<div>{{=route}}</div>{{~}}
+                    </div>
+
+                    {{?? option.type === "urbanRail"}}
+                    <div class="b-transfer-icon b-transfer-icon_urban-rail"></div>
+
+                    {{?? option.type === "metro"}}
+                    <div class="b-transfer-icon b-transfer-icon_metro b-transfer-icon_metro-{{=option.route.toLowerCase()}}"></div>
+
+                    {{?? option.type === "airport"}}
+                    <div class="b-transfer-icon b-transfer-icon_airport"></div>
+
+                    {{?? option.type === "busStation"}}
+                    <div class="b-transfer-icon b-transfer-icon_bus-station"></div>
+                    {{?}}
                 </div>
-
-                {{?? option.type === "urbanRail"}}
-                <div class="b-transfer-icon b-transfer-icon_urban-rail"></div>
-
-                {{?? option.type === "metro"}}
-                <div class="b-transfer-icon b-transfer-icon_metro b-transfer-icon_metro-{{=option.route.toLowerCase()}}"></div>
-
-                {{?? option.type === "airport"}}
-                <div class="b-transfer-icon b-transfer-icon_airport"></div>
-
-                {{?? option.type === "busStation"}}
-                <div class="b-transfer-icon b-transfer-icon_bus-station"></div>
-                {{?}}
 
                 <div class="b-station-details__transfer-name"></div>
             </div>
