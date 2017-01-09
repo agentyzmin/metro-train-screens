@@ -196,7 +196,6 @@
 
                 if (transferScreen === transferScreens.length - 1) {
                     transferScreen = 0;
-                    lang = (lang === 'ua' ? 'en' : 'ua');
                 } else {
                     ++transferScreen;
                 }
@@ -213,6 +212,11 @@
 
                 $endLine1.scrollText(line1);
                 $endLine2.scrollText(line2);
+            }
+
+            // Switch to the next language
+            if (transferScreen === 0) {
+                lang = (lang === 'ua' ? 'en' : 'ua');
             }
         }
 
