@@ -1,7 +1,7 @@
 jQuery(function($) {
     "use strict";
 
-    var NEXT_STATION_DURATION = 10 * 1000;
+    var NEXT_STATION_DURATION = 20 * 1000;
 
     var currentRoute = routes.m1;
 
