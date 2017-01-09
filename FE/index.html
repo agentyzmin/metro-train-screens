@@ -32,7 +32,7 @@
         <div class="b-inline-station__transfer">
             {{? it.transfer && it.transfer.trams }}
                 <div class="b-transfer-icon b-transfer-icon_tram">
-                    {{~it.transfer.trams :value}}<div>{{=value}}</div>{{~}}
+                    {{~it.transfer.trams.routes :value}}<div>{{=value}}</div>{{~}}
                 </div>
             {{?}}
 
