@@ -125,6 +125,10 @@
                 transferScreens = transferScreens.filter(function(screen) {
                     return screen && screen.length;
                 });
+
+                if (transferScreens.length > 1) {
+                    $stationDetails.addClass('b-station-details_multi-screen');
+                }
             }
 
             if (station.exit === 'right') {
@@ -143,6 +147,12 @@
         function updateTexts(isFirstUpdate) {
             var title, line1, line2, transferTitles, transferNames,
                 isNext = options.isNext;
+
+            if (isFirstUpdate) {
+                $stationDetails.addClass('b-station-details_first-update');
+            } else {
+                $stationDetails.removeClass('b-station-details_first-update');
+            }
 
             // Station name
             if (transferScreen === 0) {
@@ -214,6 +224,7 @@
             timeouts = [];
 
             $body.removeClass('b-screen_station-details');
+            $stationDetails.removeClass('b-station-details_multi-screen b-station-details_first-update');
         }
 
         function addTimeout(f, t) {

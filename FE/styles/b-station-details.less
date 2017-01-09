@@ -27,13 +27,33 @@
     }
 }
 
-@keyframes b-station-details__transfer {
+@keyframes b-station-details__transfer-fade-in {
     0% {
         opacity: 0;
     }
 
     100% {
         opacity: 1;
+    }
+}
+
+@keyframes b-station-details__transfer-fade-out {
+    0% {
+        opacity: 0.99;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes b-station-details__transfer-icon {
+    0% {
+        top: -70px;
+    }
+
+    100% {
+        top: 0;
     }
 }
 
@@ -121,7 +141,10 @@
     margin-top: 10px;
     margin-left: 160px;
 
-    .animation-name(b-station-details__transfer);
+    -webkit-transform: rotate(0); // Fixes animation issues
+            transform: rotate(0);
+
+    .animation-name(b-station-details__transfer-fade-in);
     .animation-fill-mode(both);
     .animation-duration(1000ms);
     .animation-delay(@nextTitleDelay);
@@ -154,6 +177,13 @@
     }
 
     .b-transfer-icon {
+        height: 70px;
+        overflow-y: hidden;
+
+        position: relative;
+        top: 0;
+        left: -10px;
+
         min-width: 90px;
         margin-left: -90px;
         vertical-align: middle;
@@ -162,10 +192,6 @@
         &:after {
             width: 70px;
             height: 70px;
-
-            position: relative;
-            top: 0;
-            left: -10px;
         }
     }
 
@@ -224,5 +250,48 @@
 
     .animate {
         .transition-delay(@nextStationDelay);
+    }
+}
+
+// Modifier: First update
+.b-station-details_first-update {
+    .b-station-details__transfer {
+        .animation-name(b-station-details__transfer-fade-in);
+        .animation-fill-mode(backwards);
+        .animation-duration(1000ms);
+        .animation-delay(@nextTitleDelay);
+    }
+}
+
+// Modifier: Multi screen
+.b-station-details_multi-screen {
+    .b-station-details__transfer {
+        .animation-name(b-station-details__transfer-fade-out);
+        .animation-fill-mode(forwards);
+        .animation-duration(1000ms);
+        .animation-delay(4s);
+    }
+
+    .b-transfer-icon {
+        &:before,
+        &:after,
+        div { // Tram routes
+            position: relative;
+
+            .animation-name(b-station-details__transfer-icon);
+            .animation-fill-mode(backwards);
+            .animation-duration(0.7s);
+            .animation-delay(@nextTitleDelay);
+        }
+    }
+}
+
+// Modifier: First update on multi screen
+.b-station-details_first-update.b-station-details_multi-screen {
+    .b-station-details__transfer {
+        .animation-name(~"b-station-details__transfer-fade-in, b-station-details__transfer-fade-out");
+        .animation-fill-mode(~"backwards, forwards");
+        .animation-duration(~"1000ms, 1000ms");
+        .animation-delay(~"@{nextTitleDelay}, 4s");
     }
 }
