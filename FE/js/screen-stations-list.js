@@ -105,10 +105,6 @@
                     }
 
                     $stationsList.append($html);
-
-                    if (station) {
-                        setNextStationWidth($html);
-                    }
                 } (i));
             }
 
@@ -176,20 +172,6 @@
                     }
                 }
             }
-        }
-
-        function setNextStationWidth($row) {
-            var $inlineStation = $row.find('.b-inline-station'),
-                $stationName = $row.find('.b-inline-station__name'),
-                $transferOptions = $row.find('.b-transfer-options'),
-                $timeLeft = $row.find('.b-inline-station__time-left'),
-                result = $inlineStation.width();
-
-            result -= $timeLeft.width();
-            result -= $transferOptions.width();
-            result -= parseInt($stationName.css('margin-left'));
-
-            $stationName.css('max-width', result);
         }
 
         function updateClock() {
