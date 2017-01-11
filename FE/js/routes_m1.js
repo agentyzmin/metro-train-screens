@@ -188,7 +188,7 @@
             },
             urbanRail: {
                 ua: ['Київ-Пасажирський'],
-                en: ['Kyiv-Passazhyrskyi'],
+                en: ['Kyiv-Pasazhyrskyi'],
                 screen: 2
             },
             trams: {
