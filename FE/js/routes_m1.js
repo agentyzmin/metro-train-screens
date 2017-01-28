@@ -341,7 +341,8 @@
         timeOnPlatform: timeOnPlatform(15),
         DTMF: {
             next: '0109',
-            current: '0200'
+            current: '0200',
+            shortRoute: '0701'
         }
     });
 
