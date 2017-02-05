@@ -3,7 +3,8 @@ jQuery(function($) {
 
     var NEXT_STATION_DURATION = 20 * 1000;
 
-    var currentRoute = routes.m1, shortRouteStationIndex = null;
+    var currentRoute = routes.m1,
+        shortRouteStationIndex = null;
 
     bindInformationalServer();
 
@@ -71,7 +72,7 @@ jQuery(function($) {
                         isEndStation = true;
                     } else if (onDTMF.direction === -1 && details.stationIndex === 0) {
                         isEndStation = true;
-                    } else if (!!shortRouteStationIndex && details.stationIndex === shortRouteStationIndex) {
+                    } else if (shortRouteStationIndex && details.stationIndex === shortRouteStationIndex) {
                         isEndStation = true;
                         shortRouteStationIndex = null;
                     }
@@ -136,7 +137,7 @@ jQuery(function($) {
                 time += station.timeOnPlatform ? station.timeOnPlatform() : 0;
             }
 
-            if (!!shortRouteStationIndex && shortRouteStationIndex === index) {
+            if (shortRouteStationIndex && shortRouteStationIndex === index) {
                 break;
             }
         }
