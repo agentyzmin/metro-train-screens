@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ifconfig wlan0 up
+ifconfig wlan0 up && sleep 15
 
 /bin/bash /home/a3/a3-metro-train/send_stats.sh
 /bin/bash /home/a3/a3-metro-train/update.sh
