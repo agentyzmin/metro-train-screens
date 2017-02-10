@@ -1,9 +1,9 @@
 #!/bin/bash
+# This file need to be executed as root
 
-ifconfig wlan0 up && sleep 15
+ifconfig wlan0 up && dhclient wlan0 && sleep 15
 
-/bin/bash /home/a3/a3-metro-train/send_stats.sh
-/bin/bash /home/a3/a3-metro-train/update.sh
-/bin/bash /home/a3/a3-metro-train/detect_line.sh
+bash /home/a3/a3-metro-train/scripts/send_stats.sh
+bash /home/a3/a3-metro-train/scripts/update.sh
 
 ifconfig wlan0 down
