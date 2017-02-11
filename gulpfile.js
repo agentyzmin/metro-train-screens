@@ -1,4 +1,6 @@
-var gulp = require('gulp'),
+var fs = require('fs'),
+    gulp = require('gulp'),
+    zip = require('gulp-zip'),
     less = require('gulp-less');
 
 gulp.task('default', ['less']);
@@ -15,4 +17,22 @@ gulp.task('less', function() {
             this.emit('end');
         }))
         .pipe(gulp.dest('./FE/'));
+});
+
+gulp.task('release', ['less'], function() {
+    var build = fs.readFileSync('./build.txt', 'utf8');
+
+    return gulp
+        .src([
+            './BE/*',
+            './FE/fonts/*',
+            './FE/js/*',
+            './FE/libs/*',
+            './FE/index.html',
+            './FE/style.css',
+            './scripts/*',
+            './package.json'
+        ], { base: './' })
+        .pipe(zip('build_' + build + '.zip'))
+        .pipe(gulp.dest('./'))
 });
