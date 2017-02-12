@@ -9,4 +9,4 @@ chromium-browser \
     --disable-save-password-bubble \
     --start-maximized \
     --incognito \
-    --kiosk "http://localhost:7777/"
+    --kiosk "http://127.0.0.1:7777/"

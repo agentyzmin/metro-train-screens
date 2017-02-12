@@ -6,5 +6,5 @@ AUTH="AuthKey123"
 
 if [ -f "$FILE" ]
 then
-    curl -X POST --header "X-Auth:${AUTH}" --data-binary @<(cat $FILE | gzip) $SERVER && rm -f $FILE
+    curl -X POST --header "X-Auth:${AUTH}" --data-binary @<(cat $FILE | gzip) $SERVER > /dev/null && rm -f $FILE
 fi
