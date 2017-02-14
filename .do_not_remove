@@ -1,0 +1,2 @@
+This file is prevents update script from crashing on this line (if there is no other hidden files)
+chown -R a3:a3 $TEMPDIR ${TEMPDIR}/* ${TEMPDIR}/.[!.]*

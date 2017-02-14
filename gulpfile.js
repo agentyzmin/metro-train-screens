@@ -31,6 +31,8 @@ gulp.task('release', ['less'], function() {
             './FE/index.html',
             './FE/style.css',
             './scripts/*',
+            './.do_not_remove',
+            './build.txt',
             './package.json'
         ], { base: './' })
         .pipe(zip('build_' + build + '.zip'))
