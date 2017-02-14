@@ -3,7 +3,8 @@ jQuery(function($) {
 
     var NEXT_STATION_DURATION = 20 * 1000;
 
-    var currentRoute = routes.m1;
+    var currentRoute = routes.m1,
+        shortRouteStationIndex = null;
 
     bindInformationalServer();
 
@@ -69,9 +70,11 @@ jQuery(function($) {
                     // Check whether it is the last station
                     if (onDTMF.direction === 1 && details.stationIndex === (currentRoute.length - 1)) {
                         isEndStation = true;
-                    }
-                    else if (onDTMF.direction === -1 && details.stationIndex === 0) {
+                    } else if (onDTMF.direction === -1 && details.stationIndex === 0) {
                         isEndStation = true;
+                    } else if (shortRouteStationIndex && details.stationIndex === shortRouteStationIndex) {
+                        isEndStation = true;
+                        shortRouteStationIndex = null;
                     }
 
                     new app.screens.StationDetails(details.station, { isEnd: isEndStation });
@@ -99,6 +102,11 @@ jQuery(function($) {
                             new app.screens.StationsList(getNextStations(previousStationIndex, onDTMF.direction));
                         }, NEXT_STATION_DURATION);
                     }
+                    break;
+
+
+                case 'shortRoute':
+                    shortRouteStationIndex = details.stationIndex;
                     break;
             }
         }
@@ -128,6 +136,10 @@ jQuery(function($) {
                 time += station[method] ? station[method]() : 0;
                 time += station.timeOnPlatform ? station.timeOnPlatform() : 0;
             }
+
+            if (shortRouteStationIndex && shortRouteStationIndex === index) {
+                break;
+            }
         }
 
         return result;
@@ -152,6 +164,14 @@ jQuery(function($) {
             if (item.DTMF.next === code) {
                 return {
                     type: 'nextStation',
+                    stationIndex: i,
+                    station: item
+                }
+            }
+
+            if (item.DTMF.shortRoute === code) {
+                return {
+                    type: 'shortRoute',
                     stationIndex: i,
                     station: item
                 }
