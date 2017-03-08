@@ -1,8 +1,17 @@
 @import "_animate";
 
-.b-stations-list__line {
-    .transition(~"-webkit-transform 1s, -moz-transform 1s, -ms-transform 1s, -o-transform 1s, transform 1s");
+.b-stations-list__line,
+.b-stations-list__line .b-inline-station__transfer,
+.b-stations-list__line .b-intermediate-stations__direction
+{
+    -webkit-transition: -webkit-transform 1s;
+    -moz-transition: -moz-transform 1s;
+    -o-transition: -o-transform 1s;
+    transition: -ms-transform 1s;
+    transition: transform 1s;
+}
 
+.b-stations-list__line {
     position: fixed;
     top: 0;
 
@@ -23,11 +32,6 @@
     .b-inline-station__transfer,
     .b-intermediate-stations__direction {
         transform: translateY(0);
-    }
-
-    .b-inline-station__transfer,
-    .b-intermediate-stations__direction {
-        .transition(~"-webkit-transform 1s, -moz-transform 1s, -ms-transform 1s, -o-transform 1s, transform 1s");
     }
 
     &:nth-child(odd) {
