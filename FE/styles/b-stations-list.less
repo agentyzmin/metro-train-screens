@@ -1,32 +1,13 @@
 @import "_animate";
 
-.b-stations-list__line-keyframes() {
-    0% {
-        height: 0;
-    }
-
-    100% {
-        height: 111px;
-    }
-}
-
-
-@-webkit-keyframes b-stations-list__line { .b-stations-list__line-keyframes }
-   @-moz-keyframes b-stations-list__line { .b-stations-list__line-keyframes }
-    @-ms-keyframes b-stations-list__line { .b-stations-list__line-keyframes }
-     @-o-keyframes b-stations-list__line { .b-stations-list__line-keyframes }
-        @keyframes b-stations-list__line { .b-stations-list__line-keyframes }
-
 .b-stations-list__line {
-    .animation-name(b-stations-list__line);
-    .animation-fill-mode(both);
-    .animation-duration(1s);
-    .transition(top 1s);
+    .transition(~"-webkit-transform 1s, -moz-transform 1s, -ms-transform 1s, -o-transform 1s, transform 1s");
 
     position: fixed;
     top: 0;
 
     width: 100%;
+    height: 111px;
     overflow: hidden;
 
     background: rgb(42, 41, 66);
@@ -39,13 +20,14 @@
         margin: 5px 0 0 80px;
     }
 
-    .b-inline-station__transfer {
-        margin-top: 0;
+    .b-inline-station__transfer,
+    .b-intermediate-stations__direction {
+        transform: translateY(0);
     }
 
     .b-inline-station__transfer,
     .b-intermediate-stations__direction {
-        .transition(margin-top 1s);
+        .transition(~"-webkit-transform 1s, -moz-transform 1s, -ms-transform 1s, -o-transform 1s, transform 1s");
     }
 
     &:nth-child(odd) {
@@ -53,7 +35,7 @@
     }
 
     &:nth-child(1) {
-        top: 100px;
+        .transform(translateY(100px));
         z-index: 96;
 
         .b-scrollable-text .animate {
@@ -66,7 +48,7 @@
     }
 
     &:nth-child(2) {
-        top: 211px;
+        .transform(translateY(211px));
         z-index: 97;
 
         .b-scrollable-text .animate {
@@ -79,7 +61,7 @@
     }
 
     &:nth-child(3) {
-        top: 322px;
+        .transform(translateY(322px));
         z-index: 98;
 
         .b-scrollable-text .animate {
@@ -92,7 +74,7 @@
     }
 
     &:nth-child(4) {
-        top: 433px;
+        .transform(translateY(433px));
         z-index: 99;
 
         .b-scrollable-text .animate {
@@ -105,7 +87,7 @@
     }
 
     &:nth-child(5) {
-        top: 544px;
+        .transform(translateY(544px));
         z-index: 100;
 
         .b-scrollable-text .animate {
@@ -119,7 +101,7 @@
     }
 
     &:nth-child(6) {
-        top: 655px;
+        .transform(translateY(655px));
         z-index: 101;
 
         .b-scrollable-text .animate {
