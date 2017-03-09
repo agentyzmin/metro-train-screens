@@ -119,23 +119,19 @@
 
     .animation-name("b-station-details__header-bg");
     .animation-duration(0.5s);
+}
 
-    &:before {
-        display: block;
+.b-station-details__line-text {
+    line-height: 125px;
+    text-align: center;
+    font-size: 60px;
+    .font-feature-settings("salt");
+    .font-bold();
 
-        line-height: 125px;
-        text-align: center;
-        font-size: 60px;
-        .font-feature-settings("salt");
-        .font-bold();
-
-        content: "-";
-
-        .animation-name("b-station-details__header-text");
-        .animation-duration(0.7s);
-        .animation-delay(@nameDelay);
-        .animation-fill-mode(backwards);
-    }
+    .animation-name("b-station-details__header-text");
+    .animation-duration(0.7s);
+    .animation-delay(@nameDelay);
+    .animation-fill-mode(backwards);
 }
 
 .b-station-details__station-title {
