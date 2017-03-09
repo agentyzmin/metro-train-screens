@@ -73,56 +73,17 @@
             $stationsList.show().empty();
             for (i = 0; i < DISPLAY_STATIONS; ++i) {
                 (function(i) {
-                    var $innerElem,
-                        station = (data.length > DISPLAY_STATIONS && i === DISPLAY_STATIONS - 1)
+                    var station = (data.length > DISPLAY_STATIONS && i === DISPLAY_STATIONS - 1)
                             ? data[data.length - 1]
                             : data[i],
                         isIntermediateSection = data.length > DISPLAY_STATIONS && i === DISPLAY_STATIONS - 2,
-                        transformLine = 'translateY(0)',
-                        transformInnerElem = 'translateY(-150px)',
                         $html = $('<div class="b-stations-list__line"></div>');
 
                     if (isIntermediateSection) {
                         $html.html(inlineIntermediateStationsTmpl());
-                        $innerElem = $html.find('.b-intermediate-stations__direction');
                     } else {
                         $html.html(inlineStationTmpl(station));
-                        $innerElem = $html.find('.b-inline-station__transfer');
                     }
-
-                    $html.css({
-                        '-webkit-transform': transformLine,
-                        '-moz-transform': transformLine,
-                        '-ms-transform': transformLine,
-                        '-o-transform': transformLine,
-                        transform: transformLine
-                    });
-
-                    $innerElem.css({
-                        '-webkit-transform': transformInnerElem,
-                        '-moz-transform': transformInnerElem,
-                        '-ms-transform': transformInnerElem,
-                        '-o-transform': transformInnerElem,
-                        transform: transformInnerElem
-                    });
-
-                    addTimeout(function() {
-                        $html.css({
-                            '-webkit-transform': '',
-                            '-moz-transform': '',
-                            '-ms-transform': '',
-                            '-o-transform': '',
-                            transform: ''
-                        });
-
-                        $innerElem.css({
-                            '-webkit-transform': '',
-                            '-moz-transform': '',
-                            '-ms-transform': '',
-                            '-o-transform': '',
-                            transform: ''
-                        });
-                    }, 1);
 
                     $stationsList.append($html);
                 } (i));

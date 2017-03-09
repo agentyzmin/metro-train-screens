@@ -1,17 +1,42 @@
 @import "_animate";
 
-.b-stations-list__line,
-.b-stations-list__line .b-inline-station__transfer,
-.b-stations-list__line .b-intermediate-stations__direction
-{
-    -webkit-transition: -webkit-transform 1s;
-    -moz-transition: -moz-transform 1s;
-    -o-transition: -o-transform 1s;
-    transition: -ms-transform 1s;
-    transition: transform 1s;
+.b-stations-list__line-keyframes() {
+    0% {
+        .transform(translateY(0));
+    }
+
+    100% {
+        // Values are vary. See selectors below.
+    }
 }
 
+.b-stations-list__transferOrDirection-keyframes() {
+    0% {
+        .transform(translateY(-150px));
+    }
+
+    100% {
+        .transform(translateY(0));
+    }
+}
+
+@-webkit-keyframes b-stations-list__line { .b-stations-list__line-keyframes }
+@-moz-keyframes b-stations-list__line { .b-stations-list__line-keyframes }
+@-ms-keyframes b-stations-list__line { .b-stations-list__line-keyframes }
+@-o-keyframes b-stations-list__line { .b-stations-list__line-keyframes }
+@keyframes b-stations-list__line { .b-stations-list__line-keyframes }
+
+@-webkit-keyframes b-stations-list__transferOrDirection { .b-stations-list__transferOrDirection-keyframes }
+@-moz-keyframes b-stations-list__transferOrDirection { .b-stations-list__transferOrDirection-keyframes }
+@-ms-keyframes b-stations-list__transferOrDirection { .b-stations-list__transferOrDirection-keyframes }
+@-o-keyframes b-stations-list__transferOrDirection { .b-stations-list__transferOrDirection-keyframes }
+@keyframes b-stations-list__transferOrDirection { .b-stations-list__transferOrDirection-keyframes }
+
 .b-stations-list__line {
+    .animation-name(b-stations-list__line);
+    .animation-fill-mode(both);
+    .animation-duration(1s);
+
     position: fixed;
     top: 0;
 
@@ -30,8 +55,11 @@
     }
 
     .b-inline-station__transfer,
-    .b-intermediate-stations__direction {
-        transform: translateY(0);
+    .b-intermediate-stations__direction
+    {
+        .animation-name(b-stations-list__transferOrDirection);
+        .animation-fill-mode(both);
+        .animation-duration(1s);
     }
 
     &:nth-child(odd) {
@@ -47,7 +75,7 @@
         }
 
         .b-inline-station__transfer {
-            .transition-delay(400ms);
+            .animation-delay(400ms);
         }
     }
 
@@ -60,7 +88,7 @@
         }
 
         .b-inline-station__transfer {
-            .transition-delay(500ms);
+            .animation-delay(500ms);
         }
     }
 
@@ -73,7 +101,7 @@
         }
 
         .b-inline-station__transfer {
-            .transition-delay(600ms);
+            .animation-delay(600ms);
         }
     }
 
@@ -86,7 +114,7 @@
         }
 
         .b-inline-station__transfer {
-            .transition-delay(700ms);
+            .animation-delay(700ms);
         }
     }
 
@@ -100,7 +128,7 @@
 
         .b-inline-station__transfer,
         .b-intermediate-stations__direction {
-            .transition-delay(800ms);
+            .animation-delay(800ms);
         }
     }
 
@@ -113,7 +141,7 @@
         }
 
         .b-inline-station__transfer {
-            .transition-delay(900ms);
+            .animation-delay(900ms);
         }
     }
 }
