@@ -34,11 +34,14 @@
             .append(this.$current);
 
         this.$content.html(this.$slider);
-        this.$elem.html(this.$content);
+        this.$elem
+            .css('opacity', 0)
+            .html(this.$content);
 
         setTimeout(function() {
             var height = that.$current.height();
 
+            that.$elem.css('opacity', '');
             that.$content.css({ 'max-height': height });
             that.slide(height);
         }, 25);
