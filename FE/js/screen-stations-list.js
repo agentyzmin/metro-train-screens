@@ -47,7 +47,7 @@
         init();
 
         function init() {
-            var i,
+            var i, station, isIntermediateSection, $html,
                 previousScreen = app.screens.current;
 
             if (previousScreen) {
@@ -72,21 +72,19 @@
             // Content
             $stationsList.show().empty();
             for (i = 0; i < DISPLAY_STATIONS; ++i) {
-                (function(i) {
-                    var station = (data.length > DISPLAY_STATIONS && i === DISPLAY_STATIONS - 1)
-                            ? data[data.length - 1]
-                            : data[i],
-                        isIntermediateSection = data.length > DISPLAY_STATIONS && i === DISPLAY_STATIONS - 2,
-                        $html = $('<div class="b-stations-list__line"></div>');
+                station = (data.length > DISPLAY_STATIONS && i === DISPLAY_STATIONS - 1)
+                    ? data[data.length - 1]
+                    : data[i];
+                isIntermediateSection = data.length > DISPLAY_STATIONS && i === DISPLAY_STATIONS - 2;
+                $html = $('<div class="b-stations-list__line"></div>');
 
-                    if (isIntermediateSection) {
-                        $html.html(inlineIntermediateStationsTmpl());
-                    } else {
-                        $html.html(inlineStationTmpl(station));
-                    }
+                if (isIntermediateSection) {
+                    $html.html(inlineIntermediateStationsTmpl());
+                } else {
+                    $html.html(inlineStationTmpl(station));
+                }
 
-                    $stationsList.append($html);
-                } (i));
+                $stationsList.append($html);
             }
 
             updateTexts();
