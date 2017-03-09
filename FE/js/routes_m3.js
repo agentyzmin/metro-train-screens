@@ -50,7 +50,7 @@
         },
         DTMF: {
             next: '0000',
-            current: '0000'
+            current: '0106'
         }
     });
 
@@ -64,8 +64,8 @@
         timeToNextStation: timeToNextStation(175),
         timeOnPlatform: timeOnPlatform(15),
         DTMF: {
-            next: '0000',
-            current: '0000'
+            next: '0107',
+            current: '0108'
         }
     });
 
@@ -79,8 +79,8 @@
         timeToNextStation: timeToNextStation(235),
         timeOnPlatform: timeOnPlatform(15),
         DTMF: {
-            next: '0000',
-            current: '0000'
+            next: '0109',
+            current: '0200'
         }
     });
 
@@ -101,8 +101,8 @@
             }
         },
         DTMF: {
-            next: '0000',
-            current: '0000'
+            next: '0201',
+            current: '0203'
         }
     });
 
@@ -123,8 +123,8 @@
             }
         },
         DTMF: {
-            next: '0000',
-            current: '0000'
+            next: '0204',
+            current: '0205'
         }
     });
 
@@ -139,8 +139,8 @@
         timeToNextStation: timeToNextStation(100),
         timeOnPlatform: timeOnPlatform(15),
         DTMF: {
-            next: '0000',
-            current: '0000'
+            next: '0206',
+            current: '0207'
         }
     });
 
@@ -154,8 +154,8 @@
         timeToNextStation: timeToNextStation(90),
         timeOnPlatform: timeOnPlatform(15),
         DTMF: {
-            next: '0000',
-            current: '0000'
+            next: '0208',
+            current: '0209'
         }
     });
 
@@ -169,8 +169,8 @@
         timeToNextStation: timeToNextStation(125),
         timeOnPlatform: timeOnPlatform(20),
         DTMF: {
-            next: '0000',
-            current: '0000'
+            next: '0300',
+            current: '0301'
         }
     });
 
@@ -194,8 +194,8 @@
             }
         },
         DTMF: {
-            next: '0000',
-            current: '0000'
+            next: '0302',
+            current: '0304'
         }
     });
 
@@ -209,8 +209,8 @@
         timeToNextStation: timeToNextStation(75),
         timeOnPlatform: timeOnPlatform(15),
         DTMF: {
-            next: '0000',
-            current: '0000'
+            next: '0305',
+            current: '0306'
         }
     });
 
@@ -224,8 +224,8 @@
         timeToNextStation: timeToNextStation(160),
         timeOnPlatform: timeOnPlatform(15),
         DTMF: {
-            next: '0000',
-            current: '0000'
+            next: '0307',
+            current: '0308'
         }
     });
 
@@ -239,8 +239,8 @@
         timeToNextStation: timeToNextStation(160),
         timeOnPlatform: timeOnPlatform(15),
         DTMF: {
-            next: '0000',
-            current: '0000'
+            next: '0309',
+            current: '0400'
         }
     });
 
@@ -260,8 +260,8 @@
             }
         },
         DTMF: {
-            next: '0000',
-            current: '0000'
+            next: '0401',
+            current: '0402'
         }
     });
 
@@ -276,8 +276,8 @@
         timeOnPlatform: timeOnPlatform(15),
         exit: 'right',
         DTMF: {
-            next: '0000',
-            current: '0000'
+            next: '0403',
+            current: '0405'
         }
     });
 
@@ -291,8 +291,8 @@
         timeToNextStation: timeToNextStation(115),
         timeOnPlatform: timeOnPlatform(15),
         DTMF: {
-            next: '0000',
-            current: '0000'
+            next: '0406',
+            current: '0407'
         }
     });
 

@@ -44,7 +44,7 @@
         timeToNextStation: timeToNextStation(110),
         DTMF: {
             next: '0000',
-            current: '0000'
+            current: '0106'
         }
     });
 
@@ -58,8 +58,8 @@
         timeToNextStation: timeToNextStation(80),
         timeOnPlatform: timeOnPlatform(15),
         DTMF: {
-            next: '0000',
-            current: '0000'
+            next: '0107',
+            current: '0108'
         }
     });
 
@@ -73,8 +73,8 @@
         timeToNextStation: timeToNextStation(115),
         timeOnPlatform: timeOnPlatform(15),
         DTMF: {
-            next: '0000',
-            current: '0000'
+            next: '0109',
+            current: '0200'
         }
     });
 
@@ -94,8 +94,8 @@
             }
         },
         DTMF: {
-            next: '0000',
-            current: '0000'
+            next: '0201',
+            current: '0203'
         }
     });
 
@@ -109,8 +109,8 @@
         timeToNextStation: timeToNextStation(105),
         timeOnPlatform: timeOnPlatform(15),
         DTMF: {
-            next: '0000',
-            current: '0000'
+            next: '0204',
+            current: '0205'
         }
     });
 
@@ -124,8 +124,8 @@
         timeToNextStation: timeToNextStation(75),
         timeOnPlatform: timeOnPlatform(15),
         DTMF: {
-            next: '0000',
-            current: '0000'
+            next: '0206',
+            current: '0207'
         }
     });
 
@@ -145,8 +145,8 @@
             }
         },
         DTMF: {
-            next: '0000',
-            current: '0000'
+            next: '0208',
+            current: '0209'
         }
     });
 
@@ -167,8 +167,8 @@
             }
         },
         DTMF: {
-            next: '0000',
-            current: '0000'
+            next: '0300',
+            current: '0301'
         }
     });
 
@@ -195,8 +195,8 @@
             }
         },
         DTMF: {
-            next: '0000',
-            current: '0000'
+            next: '0302',
+            current: '0304'
         }
     });
 
@@ -210,8 +210,8 @@
         timeToNextStation: timeToNextStation(80),
         timeOnPlatform: timeOnPlatform(15),
         DTMF: {
-            next: '0000',
-            current: '0000'
+            next: '0305',
+            current: '0306'
         }
     });
 
@@ -225,8 +225,8 @@
         timeToNextStation: timeToNextStation(75),
         timeOnPlatform: timeOnPlatform(15),
         DTMF: {
-            next: '0000',
-            current: '0000'
+            next: '0307',
+            current: '0308'
         }
     });
 
@@ -240,8 +240,8 @@
         timeToNextStation: timeToNextStation(90),
         timeOnPlatform: timeOnPlatform(15),
         DTMF: {
-            next: '0000',
-            current: '0000'
+            next: '0309',
+            current: '0400'
         }
     });
 
