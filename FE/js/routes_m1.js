@@ -142,7 +142,7 @@
     stations.push({
         name: {
             ua: 'Політехнічний інститут',
-            en: 'Politekhnichnyi instityt'
+            en: 'Politekhnichnyi Instytut'
         },
         line: 'm1',
         timeToPreviousStation: timeToPreviousStation(95),
