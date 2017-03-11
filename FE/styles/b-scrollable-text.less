@@ -4,7 +4,11 @@
     white-space: nowrap;
 
     .animate {
-        .transition(margin-top 0.7s);
+        -webkit-transition: -webkit-transform 0.7s;
+        -moz-transition: -moz-transform 0.7s;
+        -o-transition: -o-transform 0.7s;
+        transition: -ms-transform 0.7s;
+        transition: transform 0.7s;
     }
 }
 

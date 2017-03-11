@@ -47,7 +47,7 @@
         init();
 
         function init() {
-            var i,
+            var i, station, isIntermediateSection, $html,
                 previousScreen = app.screens.current;
 
             if (previousScreen) {
@@ -72,40 +72,19 @@
             // Content
             $stationsList.show().empty();
             for (i = 0; i < DISPLAY_STATIONS; ++i) {
-                (function(i) {
-                    var $transferOptions, $direction,
-                        station = (data.length > DISPLAY_STATIONS && i === DISPLAY_STATIONS - 1)
-                            ? data[data.length - 1]
-                            : data[i],
-                        $html = $('<div class="b-stations-list__line"></div>');
+                station = (data.length > DISPLAY_STATIONS && i === DISPLAY_STATIONS - 1)
+                    ? data[data.length - 1]
+                    : data[i];
+                isIntermediateSection = data.length > DISPLAY_STATIONS && i === DISPLAY_STATIONS - 2;
+                $html = $('<div class="b-stations-list__line"></div>');
 
-                    if (data.length > DISPLAY_STATIONS && i === DISPLAY_STATIONS - 2) {
-                        $html.html(inlineIntermediateStationsTmpl());
-                        $direction = $html.find('.b-intermediate-stations__direction');
+                if (isIntermediateSection) {
+                    $html.html(inlineIntermediateStationsTmpl());
+                } else {
+                    $html.html(inlineStationTmpl(station));
+                }
 
-                        $html.css({ top: 0, height: '100%' });
-                        $direction.css('margin-top', '-150px');
-
-                        addTimeout(function() {
-                            $html.css({ top: '', height: '' });
-                            $direction.css('margin-top', '');
-                        }, 1);
-                    }
-                    else if (station) {
-                        $html.html(inlineStationTmpl(station));
-                        $transferOptions = $html.find('.b-transfer-options');
-
-                        $html.css({ top: 0, height: '100%' });
-                        $transferOptions.css('margin-top', '-150px');
-
-                        addTimeout(function() {
-                            $html.css({ top: '', height: '' });
-                            $transferOptions.css('margin-top', '');
-                        }, 1);
-                    }
-
-                    $stationsList.append($html);
-                } (i));
+                $stationsList.append($html);
             }
 
             updateTexts();

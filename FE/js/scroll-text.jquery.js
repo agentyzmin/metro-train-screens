@@ -2,50 +2,90 @@
     "use strict";
 
     $.fn.scrollText = function(val) {
-        return this.each(updateItem);
+        return this.each(function() {
+            var $this = $(this);
+            new ScrollTextItem($this, val);
+        });
+    };
 
-        function updateItem() {
-            var $elem = $(this);
+    function ScrollTextItem($elem, value) {
+        this.$elem = $elem;
+        this.value = value;
+        this.$content = $elem.find('.b-scrollable-text__content-wrap');
 
-            var text, height, $current, $next,
-                $content = $elem.find('.b-scrollable-text__content-wrap');
-
-            if (!$content.length) {
-                // If element is not converted yet - do it
-                $elem.addClass('b-scrollable-text');
-                text = $elem.text() || String.fromCharCode(160); // same as &nbsp;
-                $content = $('<div class="b-scrollable-text__content-wrap"></div>');
-                $current = $('<div class="b-scrollable-text__current"></div>').text(text);
-                $next = $('<div class="b-scrollable-text__next"></div>').text(val);
-
-                $content
-                    .append($next)
-                    .append($current);
-
-                $elem.html($content);
-
-                height = $current.height();
-                $content.css({
-                    'max-height': height
-                });
-            } else {
-                $current = $elem.find('.b-scrollable-text__current');
-                $next = $elem.find('.b-scrollable-text__next');
-
-                height = $content.height();
-                $current.text($next.text());
-                $next.text(val);
-            }
-
-            $next
-                .removeClass('animate')
-                .css({ 'margin-top': -1 * height });
-
-            setTimeout(function() {
-                $next
-                    .addClass('animate')
-                    .css({ 'margin-top': 0 })
-            }, 1);
+        if (!this.$content.length) {
+            this.initAndSlide();
+        } else {
+            this.updateAndSlide();
         }
+    }
+
+    ScrollTextItem.prototype.initAndSlide = function() {
+        var that = this;
+
+        this.$elem.addClass('b-scrollable-text');
+        this.$content = $('<div class="b-scrollable-text__content-wrap"></div>');
+        this.$slider = $('<div class="b-scrollable-text__slider"></div>');
+        this.$current = $('<div class="b-scrollable-text__current"></div>').text(String.fromCharCode(160)); // Same as &nbsp;
+        this.$next = $('<div class="b-scrollable-text__next"></div>').text(this.value);
+
+        this.$slider
+            .append(this.$next)
+            .append(this.$current);
+
+        this.$content.html(this.$slider);
+        this.$elem
+            .css('opacity', 0)
+            .html(this.$content);
+
+        setTimeout(function() {
+            var height = that.$current.height();
+
+            that.$elem.css('opacity', '');
+            that.$content.css({ 'max-height': height });
+            that.slide(height);
+        }, 25);
+    };
+
+    ScrollTextItem.prototype.updateAndSlide = function() {
+        var height = this.$content.height();
+
+        this.$current = this.$elem.find('.b-scrollable-text__current');
+        this.$next = this.$elem.find('.b-scrollable-text__next');
+        this.$slider = this.$elem.find('.b-scrollable-text__slider');
+
+        this.$current.text(this.$next.text());
+        this.$next.text(this.value);
+
+        this.slide(height);
+    };
+
+    ScrollTextItem.prototype.slide = function(height) {
+        var that = this,
+            transform = 'translateY(' + (-1 * height) + 'px)';
+
+        this.$slider
+            .removeClass('animate')
+            .css({
+                '-webkit-transform': transform,
+                '-moz-transform': transform,
+                '-ms-transform': transform,
+                '-o-transform': transform,
+                'transform': transform
+            });
+
+        setTimeout(function() {
+            transform = 'translateY(' + 0 + ')';
+
+            that.$slider
+                .addClass('animate')
+                .css({
+                    '-webkit-transform': transform,
+                    '-moz-transform': transform,
+                    '-ms-transform': transform,
+                    '-o-transform': transform,
+                    'transform': transform
+                })
+        }, 1);
     }
 }(jQuery));

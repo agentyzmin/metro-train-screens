@@ -77,28 +77,15 @@
             if (previousScreen && previousScreen.name === that.name) {
                 $detailsHeader = $('.b-station-details__header');
                 $detailsFooter = $('.b-station-details__footer');
-                windowHeight = $window.height();
 
-                $detailsHeader
-                    .addClass('animate')
-                    .css('top', windowHeight);
-
-                $detailsFooter
-                    .addClass('animate')
-                    .css('bottom', -1 * (windowHeight - $detailsFooter.height()));
+                $detailsHeader.addClass('animate-out');
+                $detailsFooter.addClass('animate-out');
 
                 addTimeout(function () {
-                    $detailsHeader
-                        .css('top', '')
-                        .removeClass('animate');
-
-                    $detailsHeader
-                        .css('bottom', '')
-                        .removeClass('animate');
-
+                    $detailsHeader.removeClass('animate-out');
+                    $detailsFooter.removeClass('animate-out');
                     init();
                 }, HIDE_PREVIOUS_STATION_DURATION);
-
             } else {
                 init();
             }
