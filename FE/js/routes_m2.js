@@ -41,9 +41,9 @@
             en: 'Heroiv Dnipra'
         },
         line: 'm2',
-        timeToNextStation: timeToNextStation(110),
+        timeToNextStation: timeToNextStation(120),
         DTMF: {
-            next: '0000',
+            next: '0105',
             current: '0106'
         }
     });
@@ -55,7 +55,7 @@
         },
         line: 'm2',
         timeToPreviousStation: timeToPreviousStation(110),
-        timeToNextStation: timeToNextStation(80),
+        timeToNextStation: timeToNextStation(95),
         timeOnPlatform: timeOnPlatform(15),
         DTMF: {
             next: '0107',
@@ -70,7 +70,7 @@
         },
         line: 'm2',
         timeToPreviousStation: timeToPreviousStation(95),
-        timeToNextStation: timeToNextStation(115),
+        timeToNextStation: timeToNextStation(130),
         timeOnPlatform: timeOnPlatform(15),
         DTMF: {
             next: '0109',
@@ -84,9 +84,9 @@
             en: 'Petrivka'
         },
         line: 'm2',
-        timeToPreviousStation: timeToPreviousStation(115),
-        timeToNextStation: timeToNextStation(135),
-        timeOnPlatform: timeOnPlatform(15),
+        timeToPreviousStation: timeToPreviousStation(120),
+        timeToNextStation: timeToNextStation(140),
+        timeOnPlatform: timeOnPlatform(20),
         transfer: {
             urbanRail: {
                 ua: [TRANSFER_TO_URBAN_RAIL.ua, 'Київ-Петрівка'],
@@ -105,9 +105,9 @@
             en: 'Tarasa Shevchenka'
         },
         line: 'm2',
-        timeToPreviousStation: timeToPreviousStation(125),
-        timeToNextStation: timeToNextStation(105),
-        timeOnPlatform: timeOnPlatform(15),
+        timeToPreviousStation: timeToPreviousStation(145),
+        timeToNextStation: timeToNextStation(115),
+        timeOnPlatform: timeOnPlatform(20),
         DTMF: {
             next: '0204',
             current: '0205'
@@ -121,8 +121,8 @@
         },
         line: 'm2',
         timeToPreviousStation: timeToPreviousStation(120),
-        timeToNextStation: timeToNextStation(75),
-        timeOnPlatform: timeOnPlatform(15),
+        timeToNextStation: timeToNextStation(80),
+        timeOnPlatform: timeOnPlatform(25),
         DTMF: {
             next: '0206',
             current: '0207'
@@ -135,7 +135,7 @@
             en: 'Poshtova Ploscha'
         },
         line: 'm2',
-        timeToPreviousStation: timeToPreviousStation(75),
+        timeToPreviousStation: timeToPreviousStation(80),
         timeToNextStation: timeToNextStation(95),
         timeOnPlatform: timeOnPlatform(15),
         transfer: {
@@ -180,7 +180,7 @@
         line: 'm2',
         timeToPreviousStation: timeToPreviousStation(95),
         timeToNextStation: timeToNextStation(85),
-        timeOnPlatform: timeOnPlatform(30),
+        timeOnPlatform: timeOnPlatform(25),
         transfer: {
             metro: {
                 ua: [TRANSFER_TO_METRO.ua, 'Палац спорту'],
@@ -206,9 +206,9 @@
             en: 'Olimpiiska'
         },
         line: 'm2',
-        timeToPreviousStation: timeToPreviousStation(75),
-        timeToNextStation: timeToNextStation(80),
-        timeOnPlatform: timeOnPlatform(15),
+        timeToPreviousStation: timeToPreviousStation(85),
+        timeToNextStation: timeToNextStation(90),
+        timeOnPlatform: timeOnPlatform(20),
         DTMF: {
             next: '0305',
             current: '0306'
@@ -221,9 +221,9 @@
             en: 'Palats Ukraina'
         },
         line: 'm2',
-        timeToPreviousStation: timeToPreviousStation(80),
+        timeToPreviousStation: timeToPreviousStation(90),
         timeToNextStation: timeToNextStation(75),
-        timeOnPlatform: timeOnPlatform(15),
+        timeOnPlatform: timeOnPlatform(20),
         DTMF: {
             next: '0307',
             current: '0308'
@@ -236,9 +236,9 @@
             en: 'Lybidska'
         },
         line: 'm2',
-        timeToPreviousStation: timeToPreviousStation(70),
+        timeToPreviousStation: timeToPreviousStation(75),
         timeToNextStation: timeToNextStation(90),
-        timeOnPlatform: timeOnPlatform(15),
+        timeOnPlatform: timeOnPlatform(20),
         DTMF: {
             next: '0309',
             current: '0400'
@@ -251,9 +251,9 @@
             en: 'Demiivska'
         },
         line: 'm2',
-        timeToPreviousStation: timeToPreviousStation(90),
-        timeToNextStation: timeToNextStation(85),
-        timeOnPlatform: timeOnPlatform(15),
+        timeToPreviousStation: timeToPreviousStation(95),
+        timeToNextStation: timeToNextStation(80),
+        timeOnPlatform: timeOnPlatform(20),
         transfer: {
             busStation: {
                 ua: ['Центральинй автовокзал'],
@@ -261,8 +261,8 @@
             }
         },
         DTMF: {
-            next: '0000',
-            current: '0000'
+            next: '0401',
+            current: '0402'
         }
     });
 
@@ -272,12 +272,12 @@
             en: 'Holosiivska'
         },
         line: 'm2',
-        timeToPreviousStation: timeToPreviousStation(80),
+        timeToPreviousStation: timeToPreviousStation(85),
         timeToNextStation: timeToNextStation(125),
-        timeOnPlatform: timeOnPlatform(15),
+        timeOnPlatform: timeOnPlatform(20),
         DTMF: {
-            next: '0000',
-            current: '0000'
+            next: '0403',
+            current: '0405'
         }
     });
 
@@ -287,12 +287,12 @@
             en: 'Vasylkivska'
         },
         line: 'm2',
-        timeToPreviousStation: timeToPreviousStation(115),
+        timeToPreviousStation: timeToPreviousStation(120),
         timeToNextStation: timeToNextStation(180),
         timeOnPlatform: timeOnPlatform(15),
         DTMF: {
-            next: '0000',
-            current: '0000'
+            next: '0406',
+            current: '0407'
         }
     });
 
@@ -306,8 +306,8 @@
         timeToNextStation: timeToNextStation(80),
         timeOnPlatform: timeOnPlatform(15),
         DTMF: {
-            next: '0000',
-            current: '0000'
+            next: '0408',
+            current: '0409'
         }
     });
 
@@ -318,11 +318,11 @@
         },
         line: 'm2',
         timeToPreviousStation: timeToPreviousStation(80),
-        timeToNextStation: timeToNextStation(125),
+        timeToNextStation: timeToNextStation(130),
         timeOnPlatform: timeOnPlatform(15),
         DTMF: {
-            next: '0000',
-            current: '0000'
+            next: '0500',
+            current: '0501'
         }
     });
 
@@ -340,8 +340,8 @@
             }
         },
         DTMF: {
-            next: '0000',
-            current: '0000'
+            next: '0502',
+            current: '0503'
         }
     });
 }());

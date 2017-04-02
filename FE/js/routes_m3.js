@@ -41,7 +41,7 @@
             en: 'Syrets'
         },
         line: 'm3',
-        timeToNextStation: timeToNextStation(110),
+        timeToNextStation: timeToNextStation(125),
         transfer: {
             urbanRail: {
                 ua: [TRANSFER_TO_URBAN_RAIL.ua, 'Сирець'],
@@ -49,7 +49,7 @@
             }
         },
         DTMF: {
-            next: '0000',
+            next: '0105',
             current: '0106'
         }
     });
@@ -60,9 +60,9 @@
             en: 'Dorohozhychi'
         },
         line: 'm3',
-        timeToPreviousStation: timeToPreviousStation(110),
-        timeToNextStation: timeToNextStation(175),
-        timeOnPlatform: timeOnPlatform(15),
+        timeToPreviousStation: timeToPreviousStation(125),
+        timeToNextStation: timeToNextStation(185),
+        timeOnPlatform: timeOnPlatform(20),
         DTMF: {
             next: '0107',
             current: '0108'
@@ -76,8 +76,8 @@
         },
         line: 'm3',
         timeToPreviousStation: timeToPreviousStation(180),
-        timeToNextStation: timeToNextStation(235),
-        timeOnPlatform: timeOnPlatform(15),
+        timeToNextStation: timeToNextStation(270),
+        timeOnPlatform: timeOnPlatform(25),
         DTMF: {
             next: '0109',
             current: '0200'
@@ -90,8 +90,8 @@
             en: 'Zoloti Vorota'
         },
         line: 'm3',
-        timeToPreviousStation: timeToPreviousStation(200),
-        timeToNextStation: timeToNextStation(70),
+        timeToPreviousStation: timeToPreviousStation(240),
+        timeToNextStation: timeToNextStation(85),
         timeOnPlatform: timeOnPlatform(30),
         transfer: {
             metro: {
@@ -112,7 +112,7 @@
             en: 'Palats Sportu'
         },
         line: 'm3',
-        timeToPreviousStation: timeToPreviousStation(75),
+        timeToPreviousStation: timeToPreviousStation(85),
         timeToNextStation: timeToNextStation(105),
         timeOnPlatform: timeOnPlatform(30),
         transfer: {
@@ -135,9 +135,9 @@
             en: 'Klovska'
         },
         line: 'm3',
-        timeToPreviousStation: timeToPreviousStation(95),
-        timeToNextStation: timeToNextStation(100),
-        timeOnPlatform: timeOnPlatform(15),
+        timeToPreviousStation: timeToPreviousStation(110),
+        timeToNextStation: timeToNextStation(115),
+        timeOnPlatform: timeOnPlatform(20),
         DTMF: {
             next: '0206',
             current: '0207'
@@ -150,9 +150,9 @@
             en: 'Pecherska'
         },
         line: 'm3',
-        timeToPreviousStation: timeToPreviousStation(100),
-        timeToNextStation: timeToNextStation(90),
-        timeOnPlatform: timeOnPlatform(15),
+        timeToPreviousStation: timeToPreviousStation(120),
+        timeToNextStation: timeToNextStation(100),
+        timeOnPlatform: timeOnPlatform(20),
         DTMF: {
             next: '0208',
             current: '0209'
@@ -165,9 +165,9 @@
             en: 'Druzhby Narodiv'
         },
         line: 'm3',
-        timeToPreviousStation: timeToPreviousStation(85),
-        timeToNextStation: timeToNextStation(125),
-        timeOnPlatform: timeOnPlatform(20),
+        timeToPreviousStation: timeToPreviousStation(100),
+        timeToNextStation: timeToNextStation(145),
+        timeOnPlatform: timeOnPlatform(25),
         DTMF: {
             next: '0300',
             current: '0301'
@@ -180,9 +180,9 @@
             en: 'Vydubychi'
         },
         line: 'm3',
-        timeToPreviousStation: timeToPreviousStation(125),
-        timeToNextStation: timeToNextStation(360),
-        timeOnPlatform: timeOnPlatform(15),
+        timeToPreviousStation: timeToPreviousStation(150),
+        timeToNextStation: timeToNextStation(270),
+        timeOnPlatform: timeOnPlatform(25),
         transfer: {
             busStation: {
                 ua: ['Автостанція «Видубичі»'],
@@ -205,8 +205,8 @@
             en: 'Slavutych'
         },
         line: 'm3',
-        timeToPreviousStation: timeToPreviousStation(360),
-        timeToNextStation: timeToNextStation(75),
+        timeToPreviousStation: timeToPreviousStation(280),
+        timeToNextStation: timeToNextStation(85),
         timeOnPlatform: timeOnPlatform(15),
         DTMF: {
             next: '0305',
@@ -220,9 +220,9 @@
             en: 'Osokorky'
         },
         line: 'm3',
-        timeToPreviousStation: timeToPreviousStation(75),
+        timeToPreviousStation: timeToPreviousStation(85),
         timeToNextStation: timeToNextStation(160),
-        timeOnPlatform: timeOnPlatform(15),
+        timeOnPlatform: timeOnPlatform(20),
         DTMF: {
             next: '0307',
             current: '0308'
@@ -237,7 +237,7 @@
         line: 'm3',
         timeToPreviousStation: timeToPreviousStation(150),
         timeToNextStation: timeToNextStation(160),
-        timeOnPlatform: timeOnPlatform(15),
+        timeOnPlatform: timeOnPlatform(25),
         DTMF: {
             next: '0309',
             current: '0400'
@@ -251,8 +251,8 @@
         },
         line: 'm3',
         timeToPreviousStation: timeToPreviousStation(150),
-        timeToNextStation: timeToNextStation(90),
-        timeOnPlatform: timeOnPlatform(15),
+        timeToNextStation: timeToNextStation(110),
+        timeOnPlatform: timeOnPlatform(25),
         transfer: {
             airport: {
                 ua: ['Автобус до аеропорту', '«Бориспіль»'],
@@ -271,8 +271,8 @@
             en: 'Vyrlytsia'
         },
         line: 'm3',
-        timeToPreviousStation: timeToPreviousStation(90),
-        timeToNextStation: timeToNextStation(95),
+        timeToPreviousStation: timeToPreviousStation(105),
+        timeToNextStation: timeToNextStation(110),
         timeOnPlatform: timeOnPlatform(15),
         exit: 'right',
         DTMF: {
@@ -287,9 +287,9 @@
             en: 'Boryspilska'
         },
         line: 'm3',
-        timeToPreviousStation: timeToPreviousStation(100),
-        timeToNextStation: timeToNextStation(115),
-        timeOnPlatform: timeOnPlatform(15),
+        timeToPreviousStation: timeToPreviousStation(115),
+        timeToNextStation: timeToNextStation(120),
+        timeOnPlatform: timeOnPlatform(20),
         DTMF: {
             next: '0406',
             current: '0407'
@@ -305,8 +305,8 @@
         timeToPreviousStation: timeToPreviousStation(130),
         exit: 'right',
         DTMF: {
-            next: '0000',
-            current: '0000'
+            next: '0408',
+            current: '0409'
         }
     });
 }());
