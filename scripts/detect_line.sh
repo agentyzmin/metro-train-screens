@@ -14,7 +14,7 @@ CTS=$((($STR & 0x20) != 0))
 # M1
 if [[ $DCD -eq 1 ]] && [[ $CTS -eq 0 ]]
 then
-    echo "M1" > /home/a3/a3-metro-train/BE/line.txt
+    echo "M1" > /home/a3/.a3/metro-line.txt
     echo "${green}[DETECT LINE][OK]${reset} M1 detected."
     exit 1
 fi
@@ -22,7 +22,7 @@ fi
 # M2
 if [[ $DCD -eq 1 ]] && [[ $CTS -eq 1 ]]
 then
-    echo "M2" > /home/a3/a3-metro-train/BE/line.txt
+    echo "M2" > /home/a3/.a3/metro-line.txt
     echo "${green}[DETECT LINE][OK]${reset} M2 detected."
     exit 1
 fi
@@ -30,7 +30,7 @@ fi
 # M3
 if [[ $DCD -eq 0 ]] && [[ $CTS -eq 1  ]]
 then
-    echo "M3" > /home/a3/a3-metro-train/BE/line.txt
+    echo "M3" > /home/a3/.a3/metro-line.txt
     echo "${green}[DETECT LINE][OK]${reset} M3 detected."
     exit 1
 fi

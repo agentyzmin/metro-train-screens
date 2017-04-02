@@ -3,15 +3,33 @@ jQuery(function($) {
 
     var NEXT_STATION_DURATION = 20 * 1000;
 
-    var currentRoute = routes.m1,
+    var currentRoute,
         shortRouteStationIndex = null;
 
     bindInformationalServer();
 
     function bindInformationalServer() {
-        request();
+        getRoute();
 
-        function request() {
+        function getRoute() {
+            $
+                .post('/get-route')
+                .then(function(route) {
+                    route = route.toLowerCase();
+
+                    if (routes[route]) {
+                        currentRoute = routes[route];
+                        getAction();
+                    } else {
+                        console.log('Route ' + route + ' is not exits');
+                    }
+                })
+                .catch(function() {
+                    console.log('Could not get route');
+                });
+        }
+
+        function getAction() {
             $
                 .post('/get-action')
                 .then(function(data) {
@@ -25,11 +43,11 @@ jQuery(function($) {
                         onEvent(data);
                     }
 
-                    request();
+                    getAction();
                 })
                 .catch(function() {
                     console.log('Lost connection to the server');
-                    setTimeout(request, 1000);
+                    setTimeout(getAction, 1000);
                 });
         }
 

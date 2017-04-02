@@ -2,14 +2,17 @@
 
 const config = require('./config');
 
-var express = require('express'),
+var nextAction,
+    express = require('express'),
     fs = require('fs'),
     informer = config.useDummyInformer ? require('./dummy-informer') : require('./informer'),
     app = express();
 
-var nextAction;
-
 app.use('/', express.static(config.FE_DIR));
+
+app.post('/get-route', function(req, res) {
+    res.send(config.ROUTE);
+});
 
 app.post('/get-action', function (req, res) {
     var start = new Date().getTime();
@@ -48,5 +51,5 @@ informer.on('code', function(code) {
 informer.on('data', function(data) {
     var ts = new Date().getTime();
 
-    fs.appendFile(config.LOGFILE, ts + '::M1::' + data + "\n");
+    fs.appendFile(config.LOGFILE, ts + '::' + config.LINE + '::' + data + "\n");
 });
