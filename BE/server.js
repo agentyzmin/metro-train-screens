@@ -1,5 +1,12 @@
 "use strict";
 
+var SYS_DTMF_HANDLERS = {
+    '0909': function () {
+        var exec = require('child_process').exec;
+        exec('sudo shutdown -h now');
+    }
+};
+
 var argv = process.argv,
     informer = (argv && argv.indexOf('--dummy') === -1) ? require('./informer') : require('./dummy-informer'),
     express = require('express'),
@@ -36,6 +43,10 @@ app.post('/get-action', function (req, res) {
 app.listen(7777, '127.0.0.1');
 
 informer.on('code', function(data) {
+    if (SYS_DTMF_HANDLERS[data]) {
+        return SYS_DTMF_HANDLERS[data]();
+    }
+
     nextAction = {
         type: 'DTMF',
         code: data
