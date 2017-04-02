@@ -1,23 +1,15 @@
 "use strict";
 
-var SYS_DTMF_HANDLERS = {
-    '0909': function () {
-        var exec = require('child_process').exec;
-        exec('sudo shutdown -h now');
-    }
-};
+const config = require('./config');
 
-var argv = process.argv,
-    informer = (argv && argv.indexOf('--dummy') === -1) ? require('./informer') : require('./dummy-informer'),
-    express = require('express'),
-    path = require('path'),
+var express = require('express'),
     fs = require('fs'),
-    app = express(),
-    FE_DIR = path.join(__dirname, '../FE');
+    informer = config.useDummyInformer ? require('./dummy-informer') : require('./informer'),
+    app = express();
 
 var nextAction;
 
-app.use('/', express.static(FE_DIR));
+app.use('/', express.static(config.FE_DIR));
 
 app.post('/get-action', function (req, res) {
     var start = new Date().getTime();
@@ -42,20 +34,19 @@ app.post('/get-action', function (req, res) {
 
 app.listen(7777, '127.0.0.1');
 
-informer.on('code', function(data) {
-    if (SYS_DTMF_HANDLERS[data]) {
-        return SYS_DTMF_HANDLERS[data]();
+informer.on('code', function(code) {
+    if (config.SYS_DTMF_HANDLERS[code]) {
+        return config.SYS_DTMF_HANDLERS[code]();
     }
 
     nextAction = {
         type: 'DTMF',
-        code: data
+        code: code
     };
 });
 
 informer.on('data', function(data) {
-    var file = path.join(__dirname, '../informer.log'),
-        ts = new Date().getTime();
+    var ts = new Date().getTime();
 
-    fs.appendFile(file, ts + '::M1::' + data + "\n");
+    fs.appendFile(config.LOGFILE, ts + '::M1::' + data + "\n");
 });
