@@ -114,7 +114,7 @@
 
                 if (data.length > DISPLAY_STATIONS && i === DISPLAY_STATIONS - 2) {
                     $line = $($lines.get(i));
-                    count = data.length - DISPLAY_STATIONS;
+                    count = data.length - DISPLAY_STATIONS + 1;
 
                     if (count === 1) {
                         text = INTERMEDIATE[lang][0].replace('%count', count);
