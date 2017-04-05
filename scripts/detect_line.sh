@@ -20,7 +20,7 @@ then
 fi
 
 # M2
-if [[ $DCD -eq 1 ]] && [[ $CTS -eq 1 ]]
+if [[ $DCD -eq 0 ]] && [[ $CTS -eq 1  ]]
 then
     echo "M2" > /home/a3/.a3/metro-line.txt
     echo "${green}[DETECT LINE][OK]${reset} M2 detected."
@@ -28,7 +28,7 @@ then
 fi
 
 # M3
-if [[ $DCD -eq 0 ]] && [[ $CTS -eq 1  ]]
+if [[ $DCD -eq 1 ]] && [[ $CTS -eq 1 ]]
 then
     echo "M3" > /home/a3/.a3/metro-line.txt
     echo "${green}[DETECT LINE][OK]${reset} M3 detected."

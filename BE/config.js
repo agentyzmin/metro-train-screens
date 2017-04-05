@@ -4,7 +4,7 @@ var route,
     path = require('path');
 
 try {
-    route = fs.readFileSync('/home/a3/.a3/metro-line.txt', { encoding: 'UTF-8' });
+    route = fs.readFileSync('/home/a3/.a3/metro-line.txt', { encoding: 'UTF-8' }).trim();
 } catch(err) {}
 
 module.exports = {

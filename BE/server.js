@@ -1,8 +1,7 @@
 "use strict";
 
-const config = require('./config');
-
 var nextAction,
+    config = require('./config'),
     express = require('express'),
     fs = require('fs'),
     informer = config.useDummyInformer ? require('./dummy-informer') : require('./informer'),
@@ -51,5 +50,5 @@ informer.on('code', function(code) {
 informer.on('data', function(data) {
     var ts = new Date().getTime();
 
-    fs.appendFile(config.LOGFILE, ts + '::' + config.LINE + '::' + data + "\n");
+    fs.appendFile(config.LOGFILE, ts + '::' + config.ROUTE + '::' + data + "\n");
 });

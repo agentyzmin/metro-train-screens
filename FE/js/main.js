@@ -18,6 +18,8 @@ jQuery(function($) {
                     route = route.toLowerCase();
 
                     if (routes[route]) {
+                        $('body').addClass('b-page_' + route);
+
                         currentRoute = routes[route];
                         getAction();
                     } else {
