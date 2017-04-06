@@ -151,6 +151,10 @@
                     }
                 }
             }
+
+            if (app.testModeWarning) {
+                app.testModeWarning.updateText(lang);
+            }
         }
 
         function updateClock() {

@@ -201,6 +201,10 @@
                 $endLine2.scrollText(line2);
             }
 
+            if (app.testModeWarning) {
+                app.testModeWarning.updateText(lang);
+            }
+
             // Switch to the next language
             if (transferScreen === 0) {
                 lang = (lang === 'ua' ? 'en' : 'ua');
