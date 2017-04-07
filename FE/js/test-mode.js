@@ -19,8 +19,6 @@ jQuery(function($) {
     }
 
     TestModeWarning.prototype.updateText = function(lang) {
-        console.log($elem);
-
         if (lang !== currentLang) {
             $elem.scrollText(TEXT[lang]);
             currentLang = lang;
