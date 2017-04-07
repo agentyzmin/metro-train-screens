@@ -1,10 +1,11 @@
 "use strict";
 
-var PORT = '/dev/ttyS0';
-
 var SerialPort = require('serialport'),
     path = require('path'),
+    config = require('./config'),
     listeners = {};
+
+var PORT = config.INFORMER_PORT;
 
 openPort();
 
