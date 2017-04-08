@@ -80,7 +80,7 @@
 
                 if (isIntermediateSection) {
                     $html.html(inlineIntermediateStationsTmpl());
-                } else {
+                } else if (station) {
                     $html.html(inlineStationTmpl(station));
                 }
 

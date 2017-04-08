@@ -10,7 +10,7 @@
 
     function ScrollTextItem($elem, value) {
         this.$elem = $elem;
-        this.value = value;
+        this.value = this.normalizeValue(value);
         this.$content = $elem.find('.b-scrollable-text__content-wrap');
 
         if (!this.$content.length) {
@@ -20,13 +20,22 @@
         }
     }
 
+    ScrollTextItem.prototype.normalizeValue = function (value) {
+        if (value.length) {
+            return value;
+        }
+
+        // Animation works correctly only for non-empty text of element
+        return String.fromCharCode(160); // Same as &nbsp;
+    };
+
     ScrollTextItem.prototype.initAndSlide = function() {
         var that = this;
 
         this.$elem.addClass('b-scrollable-text');
         this.$content = $('<div class="b-scrollable-text__content-wrap"></div>');
         this.$slider = $('<div class="b-scrollable-text__slider"></div>');
-        this.$current = $('<div class="b-scrollable-text__current"></div>').text(String.fromCharCode(160)); // Same as &nbsp;
+        this.$current = $('<div class="b-scrollable-text__current"></div>').text(this.normalizeValue(''));
         this.$next = $('<div class="b-scrollable-text__next"></div>').text(this.value);
 
         this.$slider

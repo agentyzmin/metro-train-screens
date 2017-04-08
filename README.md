@@ -34,9 +34,9 @@ In order to emulate the serial port and send custom DTMF sequences, follow the m
    2017/01/28 16:43:09 socat[13278] N starting data transfer loop with FDs [5,5] and [7,7]
    ```
 
-2. Put the first PTY port in the `PORT` variable of `BE/informer.js`
-   ```javascript
-   var PORT = '/dev/pts/20';
+2. Launch server with `--port` option:
+   ```bash
+   node BE/server.js --port=/dev/pts/20
    ```
 
 3. Send DTMF sequences to the second PTY port:
