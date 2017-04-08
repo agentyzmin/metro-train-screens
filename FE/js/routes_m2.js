@@ -140,8 +140,8 @@
         timeOnPlatform: timeOnPlatform(15),
         transfer: {
             funicular: {
-                ua: ['Фунікулер'],
-                en: ['Фунікулер']
+                ua: ['Поруч', 'Фунікулер'],
+                en: ['Access to', 'Funicular']
             }
         },
         DTMF: {
