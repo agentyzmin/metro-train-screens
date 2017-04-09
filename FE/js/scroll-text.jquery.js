@@ -21,7 +21,7 @@
     }
 
     ScrollTextItem.prototype.normalizeValue = function (value) {
-        if (value.length) {
+        if (value && value.length) {
             return value;
         }
 
