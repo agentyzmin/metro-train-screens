@@ -54,6 +54,10 @@
             {{? it.transfer && it.transfer.metro }}
                 <div class="b-transfer-icon b-transfer-icon_metro b-transfer-icon_with-arrow b-transfer-icon_metro-{{=it.transfer.metro.route.toLowerCase()}}"></div>
             {{?}}
+
+            {{? it.transfer && it.transfer.funicular}}
+                <div class="b-transfer-icon b-transfer-icon_funicular"></div>
+            {{?}}
         </div>
     </div>
 </script>
