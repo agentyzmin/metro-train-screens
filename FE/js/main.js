@@ -4,7 +4,10 @@ jQuery(function($) {
     var NEXT_STATION_DURATION = 20 * 1000;
 
     var currentRoute,
-        shortRouteStationIndex = null;
+        direction = null,
+        shortRouteStationIndex = null,
+        previousStationIndex = null,
+        previousNextStationIndex = null;
 
     bindInformationalServer();
 
@@ -68,7 +71,7 @@ jQuery(function($) {
         }
 
         function onDTMF(code) {
-            var previousStationIndex, isEndStation,
+            var isEndStation,
                 details = decodeDTMF(code);
 
             clearTimeout(onDTMF.timeout);
@@ -80,17 +83,19 @@ jQuery(function($) {
             switch (details.type) {
                 case 'currentStation':
                     // Check whether the the direction has changed
-                    if (onDTMF.previousNextStationIndex !== details.stationIndex) {
-                        onDTMF.direction = null;
+                    if (previousNextStationIndex !== details.stationIndex) {
+                        direction = null;
                     }
-                    onDTMF.previousStationIndex = details.stationIndex;
-                    onDTMF.previousNextStationIndex = null;
+                    previousStationIndex = details.stationIndex;
+                    previousNextStationIndex = null;
 
 
                     // Check whether it is the last station
-                    if (onDTMF.direction === 1 && details.stationIndex === (currentRoute.length - 1)) {
-                        isEndStation = true;
-                    } else if (onDTMF.direction === -1 && details.stationIndex === 0) {
+                    if (
+                        direction === 1 && details.stationIndex === (currentRoute.length - 1)
+                        ||
+                        direction === -1 && details.stationIndex === 0
+                    ) {
                         isEndStation = true;
                     } else if (shortRouteStationIndex && details.stationIndex === shortRouteStationIndex) {
                         isEndStation = true;
@@ -104,22 +109,28 @@ jQuery(function($) {
                 case 'nextStation':
                     new app.screens.StationDetails(details.station, { isNext: true });
 
-                    // Calculate direction and display next stations (if success)
-                    previousStationIndex = onDTMF.previousStationIndex;
-                    onDTMF.previousStationIndex = null;
-                    onDTMF.previousNextStationIndex = details.stationIndex;
-
-                    if (previousStationIndex && (details.stationIndex - previousStationIndex === 1)) {
-                        onDTMF.direction = 1;
-                    } else if (previousStationIndex && (details.stationIndex - previousStationIndex === -1)) {
-                        onDTMF.direction = -1;
+                    if (previousStationIndex !== null && (details.stationIndex - previousStationIndex === 1)) {
+                        direction = 1;
+                    } else if (previousStationIndex !== null && (details.stationIndex - previousStationIndex === -1)) {
+                        direction = -1;
+                    } else if (previousStationIndex === null && details.stationIndex === 1) {
+                        // On the very first DTMF try to guess the direction
+                        previousStationIndex = 0;
+                        direction = 1;
+                    } else if (previousStationIndex === null && details.stationIndex === currentRoute.length-2) {
+                        previousStationIndex = currentRoute.length - 1;
+                        direction = -1;
+                    } else if (previousNextStationIndex === details.stationIndex) {
+                        // Direction should not be changed on double message
                     } else {
-                        onDTMF.direction = null;
+                        direction = null;
                     }
 
-                    if (onDTMF.direction) {
+                    previousNextStationIndex = details.stationIndex;
+
+                    if (direction) {
                         onDTMF.timeout = setTimeout(function() {
-                            new app.screens.StationsList(getNextStations(previousStationIndex, onDTMF.direction));
+                            new app.screens.StationsList(getNextStations(previousStationIndex, direction));
                         }, NEXT_STATION_DURATION);
                     }
                     break;
