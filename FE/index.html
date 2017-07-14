@@ -8,6 +8,7 @@
 
     <script type="text/javascript" src="js/screen-station-details.js"></script>
     <script type="text/javascript" src="js/screen-stations-list.js"></script>
+    <script type="text/javascript" src="js/screen-system-info.js"></script>
 
     <script type="text/javascript" src="js/routes_m1.js"></script>
     <script type="text/javascript" src="js/routes_m2.js"></script>
@@ -23,6 +24,7 @@
 <div class="b-stations-list"></div>
 <div class="b-station-details"></div>
 <div class="b-test-mode-warning"></div>
+<div class="b-system-info"></div>
 
 <script type="text/x-template" id="tmpl-header">
     <div class="b-header__line">
@@ -30,6 +32,21 @@
         <div class="b-header__line-text"></div>
     </div>
     <div class="b-clock"></div>
+</script>
+
+<script type="text/x-template" id="tmpl-system-info">
+    <div class="b-system-info">
+        <table>
+            <tr>
+                <td>Дата:</td>
+                <td>{{=it.date}}</td>
+            </tr>
+            <tr>
+                <td>Час:</td>
+                <td>{{=it.time}}</td>
+            </tr>
+        </table>
+    </div>
 </script>
 
 <script type="text/x-template" id="tmpl-inline-station">

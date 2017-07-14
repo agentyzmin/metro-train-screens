@@ -10,6 +10,7 @@ jQuery(function($) {
         previousNextStationIndex = null;
 
     bindInformationalServer();
+    new app.screens.SystemInfo();
 
     function bindInformationalServer() {
         getRoute();
