@@ -173,10 +173,10 @@
 
                 transferScreens[transferScreen].forEach(function(transferOption, i) {
                     if (transferOption[lang].length === 1) {
-                        $(transferTitles.get(i)).scrollText('');
+                        $(transferTitles.get(i)).hide();
                         $(transferNames.get(i)).scrollText(transferOption[lang][0]);
                     } else {
-                        $(transferTitles.get(i)).scrollText(transferOption[lang][0]);
+                        $(transferTitles.get(i)).show().scrollText(transferOption[lang][0]);
                         $(transferNames.get(i)).scrollText(transferOption[lang][1]);
                     }
                 });
